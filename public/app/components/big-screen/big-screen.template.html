@@ -1,0 +1,14 @@
+<!-- <md-progress-linear ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-mode="indeterminate"></md-progress-linear> -->
+<div layout='column' class='md-content-height' layout-padding layout-align="center center">
+     <md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>
+
+     <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xl'>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</div>
+     <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-italic'>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</div>
+     <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xxl'>${{$ctrl.bigScreenService.bigScreenItem.price.PRICE | number:2}}</div>
+     <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-padding>
+          <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>${{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR | number:2}} <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
+          <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>{{$ctrl.bigScreenService.bigScreenItem.price.CHANGEPCTDAY | number:2}}% <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
+          <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>${{$ctrl.bigScreenService.bigScreenItem.price.MKTCAP | number:2}}</div>     
+     </div>
+     <div gain-loss-class></div>
+</div>

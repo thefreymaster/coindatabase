@@ -1,0 +1,37 @@
+{
+  "name": "str)",
+  "version": "1.0.0",
+  "description": "testing internet speed at GM",
+  "main": "server.js",
+  "dependencies": {
+    "angular-animate": "^1.6.6",
+    "angular-aria": "^1.6.6",
+    "angular-chart.js": "^1.1.1",
+    "angular-material": "^1.1.5",
+    "angular-messages": "^1.6.6",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "fast-cli": "^1.0.0",
+    "node-cmd": "^3.0.0",
+    "phantomjs": "^2.1.7",
+    "request": "^2.81.0",
+    "karma-cli": "^1.0.1"
+  },
+  "devDependencies": {
+    "angular": "^1.6.6",
+    "angular-mocks": "^1.6.6",
+    "angular-ui-router": "^0.4.3",
+    "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Evan Freymiller",
+  "license": "ISC"
+}

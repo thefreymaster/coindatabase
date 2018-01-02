@@ -1,0 +1,14 @@
+<div >
+     <md-list>
+          <md-subheader class="md-no-sticky">Top 20 Cryptos</md-subheader>
+          <md-list-item class="md-2-line" ng-repeat='crypto in $ctrl.cryptoObject.all' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto)">
+               <img ng-src="http://www.cryptocompare.com{{crypto.ImageUrl}}" class="md-avatar" alt="{{item.who}}" />
+               <div class="md-list-item-text" layout="column">
+                    <h3>{{crypto.Symbol}}</h3>
+                    <h4>{{crypto.CoinName}}</h4>
+                    
+               </div>  
+          </md-list-item>
+     </md-list>
+     
+</div>

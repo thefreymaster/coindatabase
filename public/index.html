@@ -1,0 +1,112 @@
+<!doctype html>
+<html ng-app="coindbApp">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.css">
+    <link rel="stylesheet" href="app/content/site.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,500,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <!--<link rel="icon" href="app/content/favicon.png">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--<script src="app/scripts/dragscroll.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularFire/2.3.0/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.js"></script>
+    <script src="app/scripts/ngStorage.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/scripts/angular-countUp.js"></script>
+    <script src="app/scripts/countUp.js"></script>
+
+    <!--<script src="app/components/winLose/winLose.component.js"></script>
+        <script src="app/components/winLose/winLose.controller.js"></script>-->
+
+    <script src="app/controllers/app.controller.js"></script>
+    <script src="app/dialogs/loading/loading-dialog.controller.js"></script>
+    <script src="app/controllers/quote.controller.js"></script>
+
+    <script src="app/components/big-screen/big-screen.controller.js"></script>
+    <script src="app/components/big-screen/big-screen.component.js"></script>
+
+    <script src="app/components/side-nav-items/side-nav-items.controller.js"></script>
+    <script src="app/components/side-nav-items/side-nav-items.component.js"></script>
+
+    <script src="app/directives/gain-loss-class.directive.js"></script>
+
+    <script src="app/services/http.service.js"></script>
+    <script src="app/services/big-screen.service.js"></script>
+    
+    <title>CoinDB</title>
+</head>
+
+<body ng-cloak ng-controller="AppController" layout="column" layout-fill>
+    <header>
+        <md-toolbar md-whiteframe="1">
+            <div class="md-toolbar-tools">
+                <!-- <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/logo.svg" class='logo' alt="logo"> -->
+                <h2 flex>CoinDB</h2>
+                <md-button class='md-icon-button' ng-href='https://github.com/thefreymaster/howmuchisbitcoinrightnow' target='_blank'>
+                    <i class="material-icons">storage</i>
+                    <md-tooltip>Github</md-tooltip>
+                </md-button>
+            </div>
+        </md-toolbar>
+    </header>
+
+    <main layout="row">
+        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="true" md-whiteframe="2">
+            <side-nav-items></side-nav-items>
+        </md-sidenav>
+        <md-content flex='100'>
+            <big-screen></big-screen>
+        </md-content>
+    </main>
+    <footer md-whiteframe="1">
+        <md-toolbar class="md-scroll-shrink canvas">
+            <div layout="row" layout-align="center center" flex>
+                Canvas 23 Studios
+                <i class="material-icons md-18">copyright</i>
+            </div>
+        </md-toolbar>
+
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-40570108-4', 'auto');
+    ga('send', 'pageview');
+
+</script>
