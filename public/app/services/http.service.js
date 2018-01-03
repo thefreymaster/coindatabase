@@ -17,7 +17,7 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
             for(prop in response.data.Data)
             {
                 sortOrder = parseInt(response.data.Data[prop].SortOrder)
-                if(sortOrder <= 20)
+                if(sortOrder <= 100)
                 {
                     all.push(response.data.Data[prop])
                 }

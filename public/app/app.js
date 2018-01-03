@@ -4,23 +4,19 @@ var app = angular.module('coindbApp', ['ui.router', 'ngMaterial', 'ngMessages', 
 $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain'; 
 
   // For example: raised button text will be black instead of white.
-  var bitcoinTheme = $mdThemingProvider.extendPalette('deep-purple', {
-    '600': '#0288D1',
-    'contrastDefaultColor': 'dark'
-  });
-
-  // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette('bitcoinTheme', bitcoinTheme);
-
-  // Use that theme for the primary intentions
   $mdThemingProvider.theme('default')
-    .primaryPalette('bitcoinTheme', {
-      'default': '600', // by default use shade 400 from the pink palette for primary intentions
+    .primaryPalette('deep-orange', {
+      'default': '400', // by default use shade 400 from the pink palette for primary intentions
       'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
       'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
       'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
-    })
-    .dark();
+    }).dark()
+    // If you specify less than all of the keys, it will inherit from the
+    // default shades
+    .accentPalette('teal', {
+      'default': '200' // use shade 200 for default, and keep all other shades the same
+    });
+    
 
     
 

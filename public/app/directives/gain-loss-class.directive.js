@@ -1,6 +1,6 @@
 app.directive('gainLossClass', function(){
      return {
-          restrict: "A", 
+          restrict: "AE", 
           require: false, 
           scope: {
                metric: '@'

@@ -24,6 +24,26 @@
         text-align: center;
 
 }
+md-toolbar {
+    opacity: .8;
+}
+.video-background {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+.video-foreground, .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
 .top-margin{
         margin-top: 30px;
@@ -45,8 +65,8 @@
 
 }
 .metric{
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 64px;
+    font-weight: 100;
 }
 .text-metric-percent{
     font-size: 100px;
@@ -130,7 +150,7 @@ a{
     background-color: #696969;
 }
 .md-headline-xl{
-    font-size:100px;
+    font-size:180px;
     font-weight: 900;
 }
 .md-italic{
@@ -138,14 +158,22 @@ a{
     
 }
 .md-headline-xxl{
-    font-size: 250px;
+    font-size: 200px;
     font-weight: 100;
 }
 .md-content-height{
     min-height: 90vh;
+    background-color: rgba(48, 48, 48, .95) !important;
 }
 .loss-icon{
     transform: rotate(180deg);
+}
+.coindb-card{
+    background-color: rgba(31, 31, 31, 0.95) !important;
+}
+.minor-metric{
+    font-size: 54px;
+    font-weight: 100;
 }
 
 

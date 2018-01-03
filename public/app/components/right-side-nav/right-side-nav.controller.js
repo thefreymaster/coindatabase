@@ -1,8 +1,7 @@
-app.controller('SideNavItemsController', function (httpService, bigScreenService, reusableDataService) {
+app.controller('RightSideNavController', function (httpService, bigScreenService) {
     var controller = this;
     controller.httpService = httpService;
     controller.bigScreenService = bigScreenService;
-    controller.reusableDataService = reusableDataService;
 
     // controller.cryptoObject = { all: {} };
 

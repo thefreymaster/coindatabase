@@ -54,21 +54,29 @@
     <script src="app/components/side-nav-items/side-nav-items.controller.js"></script>
     <script src="app/components/side-nav-items/side-nav-items.component.js"></script>
 
+    <script src="app/components/right-side-nav/right-side-nav.controller.js"></script>
+    <script src="app/components/right-side-nav/right-side-nav.component.js"></script>
+
+    <script src="app/components/status-bar/status-bar.controller.js"></script>
+    <script src="app/components/status-bar/status-bar.component.js"></script>
+
     <script src="app/directives/gain-loss-class.directive.js"></script>
 
     <script src="app/services/http.service.js"></script>
     <script src="app/services/big-screen.service.js"></script>
+    <script src="app/services/reusable-data.service.js"></script>
     
     <title>CoinDB</title>
 </head>
 
 <body ng-cloak ng-controller="AppController" layout="column" layout-fill>
+    <status-bar></status-bar>
     <header>
         <md-toolbar md-whiteframe="1">
             <div class="md-toolbar-tools">
                 <!-- <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/logo.svg" class='logo' alt="logo"> -->
                 <h2 flex>CoinDB</h2>
-                <md-button class='md-icon-button' ng-href='https://github.com/thefreymaster/howmuchisbitcoinrightnow' target='_blank'>
+                <md-button class='md-icon-button' ng-href='https://github.com/thefreymaster/coindatabaseangular' target='_blank'>
                     <i class="material-icons">storage</i>
                     <md-tooltip>Github</md-tooltip>
                 </md-button>
@@ -77,12 +85,16 @@
     </header>
 
     <main layout="row">
-        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="true" md-whiteframe="2">
+        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('min-width: 333px')" md-whiteframe="2">
             <side-nav-items></side-nav-items>
         </md-sidenav>
         <md-content flex='100'>
             <big-screen></big-screen>
         </md-content>
+
+        <!--<md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="true" md-whiteframe="2">
+            <right-side-nav></right-side-nav>
+        </md-sidenav>-->
     </main>
     <footer md-whiteframe="1">
         <md-toolbar class="md-scroll-shrink canvas">
