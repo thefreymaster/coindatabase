@@ -58,15 +58,15 @@ md-toolbar {
         margin-top: 100px;
 }
 .gain{
-    color:#5bda90;
+    color:#5bda90 !important;
 }
 .loss{
-    color:#ff766c;
+    color:#ff766c !important;
 
 }
 .metric{
-    font-size: 64px;
-    font-weight: 100;
+    font-size: 40px;
+    font-weight: 800;
 }
 .text-metric-percent{
     font-size: 100px;
@@ -136,7 +136,17 @@ a{
     max-width: 50px;
     margin-right: 10px;
 }
+.active-side-nav{
+    border-left: 6px solid rgb(255,112,67);
+    background-color: rgba(152, 91, 67, .45);
+    transition: border-left 400ms ease-in-out;
+}
 
+.material-icons.md-10 { font-size: 10px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 
 
 .scrollbar::-webkit-scrollbar-thumb {
@@ -158,7 +168,7 @@ a{
     
 }
 .md-headline-xxl{
-    font-size: 200px;
+    font-size: 100px;
     font-weight: 100;
 }
 .md-content-height{
@@ -169,13 +179,27 @@ a{
     transform: rotate(180deg);
 }
 .coindb-card{
-    background-color: rgba(31, 31, 31, 0.95) !important;
+    border: 3px solid rgba(255, 255, 255, 0.05);    
 }
 .minor-metric{
     font-size: 54px;
     font-weight: 100;
 }
-
+.status-bar-padding{
+    padding:5px;
+}
+.center{
+    text-align: center;
+}
+/* .md-avatar{
+    filter: grayscale(100%)
+} */
+.channel-metrics-container{
+    margin-left:10px;
+}
+.title{
+    color:white;
+}
 
 
 
@@ -184,6 +208,13 @@ a{
 
 .right-margin-correction{
     margin-right: 15px;
+}
+
+.weight-300{
+    font-weight:300;
+}
+.weight-900{
+    font-weight:900;
 }
 
 

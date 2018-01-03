@@ -17,7 +17,7 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
             for(prop in response.data.Data)
             {
                 sortOrder = parseInt(response.data.Data[prop].SortOrder)
-                if(sortOrder <= 100)
+                if(sortOrder <= 50)
                 {
                     all.push(response.data.Data[prop])
                 }
@@ -26,17 +26,24 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
 
         });
     }
+    service.getAllPrices = function(item){
+        return $http.get('/api/all_prices/'+item).then(function(response){
+            return response;
+        })
+    }
+
     service.getCurrentPrice = function(item){
         return $http.get('/api/current_price/'+item).then(function(response){
             return response;
         })
     }
 
-    service.getTime = function () {
-        return $http.get('/api/time').then(function (response) {
-            return response.data;
 
-        });
+
+    service.getTopVolumns = function(){
+        return $http.get('/api/top_volumns/').then(function(response){
+            return response;
+        })
     }
     service.getYesterdaysBitcoinPrice = function () {
         return $http.get('/api/yesterday_price').then(function (response) {

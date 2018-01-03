@@ -1,7 +1,7 @@
- <!--<md-progress-linear ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-mode="indeterminate"></md-progress-linear> -->
-<!--<div layout='column' class='md-content-height' layout-padding layout-align="center center">
-     <md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>
-
+<!--<md-progress-linear ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-mode="indeterminate"></md-progress-linear> -->
+<div layout='column' ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' class='md-content-height' layout-padding layout-align="center center">
+     <md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="150"></md-progress-circular>
+<!-- 
      <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xl'>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</div>
      <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='minor-metric'>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</div>
      <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xxl'>${{$ctrl.bigScreenService.bigScreenItem.price.PRICE | number:2}}</div>
@@ -9,45 +9,47 @@
           <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>${{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR | number:2}} <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
           <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>{{$ctrl.bigScreenService.bigScreenItem.price.CHANGEPCTDAY | number:2}}% <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
           <div flex='33' class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>${{$ctrl.bigScreenService.bigScreenItem.price.MKTCAP | number:2}}</div>     
-     </div>
+     </div> -->
 
-</div>-->
+</div>
 <!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
-<md-list ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false'>
-        <md-list-item class="md-2-line">
-            <img ng-src="http://www.cryptocompare.com{{$ctrl.bigScreenService.bigScreenItem.current.ImageUrl}}" class="md-avatar" />
-            <div class="md-list-item-text" layout="column">
-                <h3>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</h3>
-                <h4>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</h4>
+<md-list ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
+    <md-list-item class="md-2-line">
+        <img ng-src="http://www.cryptocompare.com{{$ctrl.bigScreenService.bigScreenItem.current.ImageUrl}}" class="md-avatar" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</h3>
+            <h4>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</h4>
 
-            </div>
-             <md-divider></md-divider>
-        </md-list-item>
-        
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+
 </md-list>
-<div ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap layout-padding class='channel-metrics-container'>
+<div ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap class='channel-metrics-container'>
     <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="10px" md-row-height="4:3"
         class='report-gutter'>
         <!-- ==================================================VIEWS========================================================================-->
-       
-        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="3" md-colspan="5" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
-            
-            <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xl'>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</div>
+
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="3" md-colspan="5" md-rowspan-lg="5" md-colspan-lg="8" md-rowspan-md="6" md-colspan-md="12" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xl'>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</div>
 
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
-                        <h3 class='metrics-title'>Crypto Currency</h3>
+                        <h3 class='metrics-title'>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</h3>
                     </span>
                     <div flex></div>
                 </div>
             </md-grid-tile-footer>
         </md-grid-tile>
-        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="3" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
-            
-          <div class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>${{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR | number:2}} <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="4" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>${{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR | number:2}}
+                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i>
+            </div>
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
@@ -57,10 +59,12 @@
                 </div>
             </md-grid-tile-footer>
         </md-grid-tile>
-        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="3" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
-            
-            <div class='metric' gain-loss-class metric='{{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR}}'>{{$ctrl.bigScreenService.bigScreenItem.price.CHANGEPCTDAY | number:2}}% <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i></div>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>{{$ctrl.bigScreenService.bigScreenItem.price.CHANGEPCTDAY | number:2}}%
+                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i>
+            </div>
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
@@ -70,26 +74,48 @@
                 </div>
             </md-grid-tile-footer>
         </md-grid-tile>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+        md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="5" md-colspan="6" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
+        <div class='metric'>{{$ctrl.bigScreenService.bigScreenItem.price.LASTMARKET}}
             
+        </div>
+        <md-grid-tile-footer>
+            <div layout='row'>
+                <span>
+                    <h3 class='metrics-title'>Highest Market Price Available</h3>
+                </span>
+                <div flex></div>
+            </div>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="3" md-colspan="6" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
             <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xxl'>${{$ctrl.bigScreenService.bigScreenItem.price.PRICE | number:2}}</div>
-            
+
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
-                        <h3 class='metrics-title'>Current Price</h3>
+                        <h3 class='metrics-title'>Current USD Price</h3>
                     </span>
                     <div flex></div>
                 </div>
             </md-grid-tile-footer>
         </md-grid-tile>
-        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
-            
-          <div class='metric'>{{$ctrl.bigScreenService.bigScreenItem.current.Algorithm }}</div>
-            
+
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="4" md-colspan="5" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <canvas id="line" class="chart chart-line" chart-data="$ctrl.data" chart-labels="$ctrl.historic_labels" chart-colors="$ctrl.colors"
+                chart-series="$ctrl.series" chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="onClick">
+            </canvas>
+        </md-grid-tile>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div class='metric'>{{$ctrl.bigScreenService.bigScreenItem.current.Algorithm }}</div>
+
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
@@ -99,23 +125,34 @@
                 </div>
             </md-grid-tile-footer>
         </md-grid-tile>
-        <!--<md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="5" md-colspan="6" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15"
-            md-colspan-xs="12" class='earnings-card'>
-            
-            <canvas id="line" class="chart chart-line" chart-data="$ctrl.data"
-            chart-labels="$ctrl.historic_labels" chart-colors="$ctrl.colors" chart-series="$ctrl.series" chart-options="$ctrl.options"
-            chart-dataset-override="$ctrl.datasetOverride" chart-click="onClick">
-            </canvas
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div class='metric'>{{$ctrl.bigScreenService.bigScreenItem.price.SUPPLY}}</div>
+
+            <md-grid-tile-footer>
+                <div layout='row'>
+                    <span>
+                        <h3 class='metrics-title'>Coin Supply</h3>
+                    </span>
+                    <div flex></div>
+                </div>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+        <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
+            md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+
+            <div class='metric'>${{$ctrl.bigScreenService.bigScreenItem.price.MKTCAP}}</div>
             
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
-                        <h3 class='metrics-title'>Crypto Icon</h3>
+                        <h3 class='metrics-title'>Market Cap</h3>
                     </span>
                     <div flex></div>
                 </div>
-            </md-grid-tile-footer>-->
+            </md-grid-tile-footer>
         </md-grid-tile>
-        
+
     </md-grid-list>
 </div>

@@ -1,21 +1,27 @@
 <div>
 
     <md-list>
-        <md-subheader class="md-no-sticky">Top 100 Cryptos</md-subheader>
+        <md-subheader class="md-no-sticky">Top 50 Cryptos</md-subheader>
         <md-input-container class="md-block" flex-gt-xs>
             <label>Search</label>
             <md-icon><i class="material-icons">&#xE8B6;</i></md-icon>
             <input ng-model="search">
-            <md-icon><i class="material-icons">&#xE5CD;</i></md-icon>
+            <!-- <md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto.Symbol)'>
+                <i class="material-icons">&#xE5CD;</i>
+            </md-button> -->
         </md-input-container>
         <md-divider></md-divider>
-        <md-list-item class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.all | filter:search | orderBy: crypto.SortOrder' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto)">
+        <md-list-item ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.all | filter:search | orderBy: SortOrder' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
             <img ng-src="http://www.cryptocompare.com{{crypto.ImageUrl}}" class="md-avatar" alt="{{item.who}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{crypto.Symbol}}</h3>
-                <h4>{{crypto.CoinName}}</h4>
-
+                <p>{{crypto.CoinName}}</p>
+                <p ng-class='{"gain": crypto.Price.CHANGEPCTDAY > 0, "loss": crypto.Price.CHANGEPCTDAY < 0}'>{{crypto.Price.PRICE | currency:($): 2}} <i ng-class='{"loss-icon": crypto.Price.CHANGEPCTDAY < 0}' class="material-icons md-10">&#xE86B;</i></p>
+                
             </div>
+            <div flex></div>
+            <md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto.Symbol)'><i class="material-icons">add</i><md-tooltip>Track Coin</md-tooltip></md-button>
+            
              <md-divider></md-divider>
         </md-list-item>
         

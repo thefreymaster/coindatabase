@@ -1,0 +1,64 @@
+<!--<md-progress-linear ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-mode="indeterminate"></md-progress-linear> -->
+<div layout='column' ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' class='md-content-height' layout-padding
+    layout-align="center center">
+    <md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>
+</div>
+<!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
+<md-list ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
+    <md-list-item class="md-2-line">
+        <img ng-src="http://www.cryptocompare.com{{$ctrl.bigScreenService.bigScreenItem.current.ImageUrl}}" class="md-avatar" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{$ctrl.bigScreenService.bigScreenItem.current.CoinName}}</h3>
+            <h4>{{$ctrl.bigScreenService.bigScreenItem.current.Symbol}}</h4>
+
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text" layout="row">
+            <h1 flex class='center' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>${{$ctrl.bigScreenService.bigScreenItem.price.PRICE | number:2}}
+                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons md-18">&#xE86B;</i>
+            </h1>
+
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text" layout="row">
+            <div flex layout='column'>
+                <h3 class='center' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>${{$ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR | number:2}}
+                    <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons md-18">&#xE86B;</i>
+                </h3>
+                <p class='center'>24 HR Dollar Change</p>
+            </div>
+            <div flex layout='column'>
+                <h3 class='center' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>{{$ctrl.bigScreenService.bigScreenItem.price.CHANGEPCTDAY | number:2}}%
+                    <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons md-18">&#xE86B;</i>
+                </h3>
+                <p class='center'>24 HR Percent Change</p>
+            </div>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text" layout="column">
+            <h3 class='metric'>{{$ctrl.bigScreenService.bigScreenItem.current.Algorithm }}</h3>
+            <p>Algorithm</p>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text" layout="column">
+            <h3 class='metric'>{{$ctrl.bigScreenService.bigScreenItem.price.SUPPLY}}</h3>
+            <p>Coin Supply</p>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+    <md-list-item class="md-2-line">
+        <div class="md-list-item-text" layout="column">
+            <h3 class='metric'>${{$ctrl.bigScreenService.bigScreenItem.price.MKTCAP}}</h3>
+            <p>Market Cap</p>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+</md-list>

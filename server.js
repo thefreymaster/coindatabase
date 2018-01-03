@@ -14,7 +14,7 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
-var port = 4500;
+var port = 4000;
 app.listen(process.env.PORT || port, function () { 
     console.log('Running REST HTTPS server on port: '+port);
 });
@@ -60,24 +60,39 @@ app.get('/api/current_price/:symbol', function(req, res){
     });
 
 });
+    app.get('/api/top_volumns', function(req, res){
+    
 
-app.get('/api/historic_price', function(req, res){
-
-    var options = { 
-        method: 'GET',
-        url: 'https://api.coindesk.com/v1/bpi/historical/close.json'
-
-        };
-
-    request(options, function (error, response, body) {
-    if (error) throw new Error(error);
-
-        res.json(JSON.parse(body));
+        var options = { 
+            method: 'GET',
+            url: 'https://min-api.cryptocompare.com/data/top/volumes?tsym=ETH'
+    
+            };
+    
+        request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+    
+            res.json(JSON.parse(body));
+        });
+    
     });
 
-});
+    app.get('/api/all_prices/:symbols', function(req, res){
+        
 
-
+            var options = { 
+                method: 'GET',
+                url: 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.symbols + '&tsyms=USD'
+        
+                };
+        
+            request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+        
+                res.json(JSON.parse(body));
+            });
+        
+        });
 // app.get('/api/time', function(req, res){
 
 //     var options = { 

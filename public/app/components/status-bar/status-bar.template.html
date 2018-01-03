@@ -1,3 +1,20 @@
-<div md-colors="{background: 'default-primary-700-1'}" layout='row' layout-align='center center'>
-    <div>Status bar</div>
+<div hide-xs hide-sm class='status-bar-padding' md-colors="{background: 'default-primary-400-1'}" layout='row' layout-align='center center'>
+    <div flex='5' flex-offset='10' class='center weight-300'>
+        1: {{$ctrl.reusableDataService.cryptoObject.top_volumns[0].NAME}}
+    </div>
+    <div flex='5' class='center'>
+        &#8226     
+    </div>  
+    <div flex='5' class='center weight-300'>
+        2: {{$ctrl.reusableDataService.cryptoObject.top_volumns[1].NAME}}
+        
+    </div>
+    <div flex='5' class='center'>
+        &#8226     
+    </div>   
+    <div flex='5' class='center weight-300'>
+        3: {{$ctrl.reusableDataService.cryptoObject.top_volumns[2].NAME}}
+        
+    </div>
+    
 </div>
