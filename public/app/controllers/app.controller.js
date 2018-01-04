@@ -9,7 +9,7 @@ angular.module('coindbApp').controller('AppController', ['$scope', '$mdMedia', '
         $scope.screenIsLarge = $mdMedia('lg');
         $scope.screenIsExtraLarge = $mdMedia('xl');
         
-        $scope.inDevMode = true;
+        $scope.inDevMode = false;
 
 
   $scope.openLeftMenu = function() {
