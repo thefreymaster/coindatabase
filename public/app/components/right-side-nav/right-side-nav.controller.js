@@ -4,7 +4,10 @@ app.controller('RightSideNavController', function (httpService, bigScreenService
     controller.bigScreenService = bigScreenService;
     controller.reusableDataService = reusableDataService;
 
-
+    controller.calculateCost = function(usdPrice, amount){
+        controller.cost = amount*usdPrice;
+        
+    }
     // controller.cryptoObject = { all: {} };
 
     // var allCryptoPromise = controller.httpService.getAllCryptos();

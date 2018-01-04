@@ -65,7 +65,7 @@ md-toolbar {
 
 }
 .metric{
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 800;
 }
 .text-metric-percent{
@@ -76,6 +76,7 @@ md-toolbar {
 }
 .holdings-margin-correction{
     margin-top: 18px;
+    margin-left: -12px;
 }
 main{
     min-height:90vh;
@@ -190,7 +191,7 @@ a{
     transition: transform 500ms ease-in-out;    
 }
 .coindb-card{
-    border: 3px solid rgba(255, 255, 255, 0.05);    
+    border: 1px solid rgba(255, 255, 255, 0.05);    
 }
 .minor-metric{
     font-size: 54px;
