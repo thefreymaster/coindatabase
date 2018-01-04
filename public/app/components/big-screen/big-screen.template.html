@@ -47,8 +47,8 @@
         <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="4" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
             md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_1h | number:2}}%
-                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i>
+            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_1h | number:2}}%
+                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h < 0}' class="material-icons">&#xE86B;</i>
             </div>
             <md-grid-tile-footer>
                 <div layout='row'>
@@ -62,13 +62,13 @@
         <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
             md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_24h | number:2}}%
-                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i>
+            <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_24h | number:2}}%
+                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}' class="material-icons">&#xE86B;</i>
             </div>
             <md-grid-tile-footer>
                 <div layout='row'>
                     <span>
-                        <h3 class='metrics-title'> 24 Hour Percent Change</h3>
+                        <h3 class='metrics-title'>24 Hour Percent Change</h3>
                     </span>
                     <div flex></div>
                 </div>
@@ -77,8 +77,8 @@
         <md-grid-tile md-whiteframe="2" class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-md="7" md-colspan-md="6" md-rowspan-sm="8"
         md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-        <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR > 0, "loss": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_7d | number:2}}%
-            <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.price.CHANGE24HOUR < 0}' class="material-icons">&#xE86B;</i>
+        <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_7d | number:2}}%
+            <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d < 0}' class="material-icons">&#xE86B;</i>
         </div>            
 
         <md-grid-tile-footer>

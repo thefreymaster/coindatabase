@@ -10,17 +10,22 @@
                 <i class="material-icons">&#xE5CD;</i>
             </md-button> -->
         </md-input-container>
+        <div layout='row' layout-align='center center'>
+            <md-button ng-click='$ctrl.changeOrderByTerm("percent_change_24h")' class='md-block'>Percent</md-button>
+            <md-button ng-click='$ctrl.changeOrderByTerm("rank")' class='md-block'>Rank</md-button>
+            
+        </div>
         <md-divider></md-divider>
-        <md-list-item ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.top_cryptos | filter:search | orderBy: SortOrder' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
+        <md-list-item ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.top_cryptos | filter:search | orderBy: $ctrl.orderByTerm: $ctrl.reverseStatus' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
             <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{crypto.symbol}}</h3>
                 <p>{{crypto.name}}</p>
-                <p ng-class='{"gain": crypto.percent_change_1h > 0, "loss": crypto.Ppercent_change_1h < 0}'>{{crypto.percent_change_1h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_1h < 0}' class="material-icons md-10">&#xE86B;</i></p>
+                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
                 
             </div>
             <div flex></div>
-            <md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto.Symbol)'><i class="material-icons">add</i><md-tooltip>Track Coin</md-tooltip></md-button>
+            <!--<md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto.Symbol)'><i class="material-icons">add</i><md-tooltip>Track Coin</md-tooltip></md-button>-->
             
              <md-divider></md-divider>
         </md-list-item>

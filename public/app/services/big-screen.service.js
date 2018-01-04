@@ -37,17 +37,17 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
 
 
 
-        // var historyByDayPromise = service.httpService.getHistoryByDay(newItem.symbol)
-        // historyByDayPromise.then(function (results2) {
-        //     service.bigScreenItem.historic_prices = results2.data.Data;
-        //     for (k = 0; k < service.bigScreenItem.historic_prices.length; k++) {
-        //         service.bigScreenItem.chart_data.push(service.bigScreenItem.historic_prices[k].close);
-        //         service.bigScreenItem.chart_labels.push($filter('date')(service.bigScreenItem.historic_prices[k].time * 1000, 'mediumDate'));
+        var historyByDayPromise = service.httpService.getHistoryByDay(newItem.symbol)
+        historyByDayPromise.then(function (results2) {
+            service.bigScreenItem.historic_prices = results2.data.Data;
+            for (k = 0; k < service.bigScreenItem.historic_prices.length; k++) {
+                service.bigScreenItem.chart_data.push(service.bigScreenItem.historic_prices[k].close);
+                service.bigScreenItem.chart_labels.push($filter('date')(service.bigScreenItem.historic_prices[k].time * 1000, 'mediumDate'));
 
-        //     }
+            }
 
 
-        // })
+        })
 
         // })
 
