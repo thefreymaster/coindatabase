@@ -178,6 +178,14 @@ a{
 .loss-icon{
     transform: rotate(180deg);
 }
+.rotate-icon{
+    transform: rotate(225deg);
+    transition: transform 500ms ease-in-out;    
+}
+.unrotate-icon{
+    
+    transition: transform 500ms ease-in-out;    
+}
 .coindb-card{
     border: 3px solid rgba(255, 255, 255, 0.05);    
 }

@@ -1,10 +1,11 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', function (httpService, bigScreenService) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', function (httpService, bigScreenService, $localStorage) {
     var service = this;
     console.log('Reusable Data Service');
     service.httpService = httpService;
     service.bigScreenService = bigScreenService;
+    service.$storage = $localStorage;
 
-    service.cryptoObject = { all: {}, top_volumns: {}, top_cryptos: {} };
+    service.cryptoObject = { all: {}, top_volumns: {}, top_cryptos: {}, tracked_cryptos: [] };
 
 
     var topCryptosPromise = service.httpService.getTopCryptos();
@@ -16,51 +17,56 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].total_supply = MoneyFormat(service.cryptoObject.top_cryptos[h].total_supply);   
             service.cryptoObject.top_cryptos[h].percent_change_24h = Number(service.cryptoObject.top_cryptos[h].percent_change_24h);
             service.cryptoObject.top_cryptos[h].rank = Number(service.cryptoObject.top_cryptos[h].rank);
+            service.cryptoObject.top_cryptos[h].tracked = false;
+            for(d=0;d<service.$storage.tracked_cryptos.length;d++)
+            {
+                if(service.cryptoObject.top_cryptos[h].id == service.$storage.tracked_cryptos[d].id)
+                {
+                    service.cryptoObject.top_cryptos[h].tracked = true;                 
+                    service.cryptoObject.tracked_cryptos.push(service.$storage.tracked_cryptos[d]);
+                }
+            }
             
-                   
         }
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
         console.log(service.cryptoObject);
-
-        // var allCryptoPromise = service.httpService.getAllCryptos();
-        // allCryptoPromise.then(function (results) {
-        //     service.cryptoObject.all = results;
-        //     console.log(service.cryptoObject);
-        // })
     })
-
-    // var allCryptoPromise = service.httpService.getAllCryptos();
-    // var tempSymbols = '';
-    // allCryptoPromise.then(function (results) {
-    //     service.cryptoObject.all = results;
-    //     // service.bigScreenService.changeBigScreenItem(service.cryptoObject.all[0], 0);
-
-    //     for (k = 0; k < service.cryptoObject.all.length; k++) {
-    //         service.cryptoObject.all[k]['Price'] = {};
-    //         // service.cryptoObject.all[k]['Track'] = false;
-
-    //         tempSymbols = tempSymbols + service.cryptoObject.all[k].Symbol + ',';
-    //     }
-    //     var getAllPricesPromise = service.httpService.getAllPrices(tempSymbols);
-    //     getAllPricesPromise.then(function (results2) {
-    //         var t = 0;
-    //         for (prop in results2.data.RAW) {
-    //             service.cryptoObject.all[t].Price = results2.data.RAW[prop].USD;
-    //             t++;
-    //         }
-    //         console.log(service.cryptoObject);
-    //     })
-
-    //     var topVolumnsPromise = service.httpService.getTopVolumns();
-    //     topVolumnsPromise.then(function (results3) {
-    //         service.cryptoObject.top_volumns = results3.data.Data;
-
-    //     })
-    // })
 
     service.trackCoin = function (coin) {
         console.log(coin);
         console.log(service.cryptoObject);
+        if(coin.tracked == true)
+        {
+            coin.tracked = false;
+            for(v=0;v<service.cryptoObject.tracked_cryptos.length;v++){
+                if(service.cryptoObject.tracked_cryptos[v].id == coin.id)
+                {
+                    service.cryptoObject.tracked_cryptos.splice(v, 1);
+                    service.$storage.tracked_cryptos.splice(v, 1);
+                    console.log(service.$storage.tracked_cryptos);
+                }
+            }
+            
+            
+        }
+        else{
+            coin.tracked = true;
+            service.cryptoObject.tracked_cryptos.push(coin);
+            if(service.$storage.tracked_cryptos == undefined)
+            {
+                service.$storage.tracked_cryptos = [];
+                service.$storage.tracked_cryptos.push(coin);
+                console.log(service.$storage.tracked_cryptos);
+            }
+            else{
+                service.$storage.tracked_cryptos.push(coin);
+                console.log(service.$storage.tracked_cryptos);
+                
+            }
+            
+        }
+        
+
 
     }
     function MoneyFormat(labelValue) {

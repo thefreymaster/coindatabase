@@ -1,4 +1,4 @@
-var app = angular.module('coindbApp', ['ui.router', 'ngMaterial', 'ngMessages', 'chart.js', 'countUpModule']).config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider, ChartJsProvider){
+var app = angular.module('coindbApp', ['ui.router', 'ngMaterial', 'ngMessages', 'chart.js', 'countUpModule', 'ngStorage']).config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider, ChartJsProvider){
 
 
 $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain'; 
