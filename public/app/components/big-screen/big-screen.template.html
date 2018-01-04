@@ -32,11 +32,12 @@
 
 </md-list>
 <div ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
-    <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="0px" md-row-height="4:3" class='report-gutter'>
+    <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="0px" md-row-height="4:3"
+        class='report-gutter'>
         <!-- ==================================================NAME========================================================================-->
 
-        <md-grid-tile class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="6"
-            md-colspan-md="12" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="6" md-colspan-md="12"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xl'>{{$ctrl.bigScreenService.bigScreenItem.current.symbol}}</div>
 
@@ -50,8 +51,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================1HR CHANGE========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_1h | number:2}}%
                 <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_1h < 0}' class="material-icons">&#xE86B;</i>
@@ -66,8 +67,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================24 HR CHANGE========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_24h | number:2}}%
                 <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}' class="material-icons">&#xE86B;</i>
@@ -82,8 +83,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================7 DAY CHANGE========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d < 0}'>{{$ctrl.bigScreenService.bigScreenItem.current.percent_change_7d | number:2}}%
                 <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_7d < 0}' class="material-icons">&#xE86B;</i>
@@ -99,8 +100,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================PRICE========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="4" md-colspan-lg="6" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="4" md-colspan-lg="6" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false' class='md-headline-xxl'>${{$ctrl.bigScreenService.bigScreenItem.current.price_usd | number:2}}</div>
 
@@ -114,8 +115,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================GRAPH========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <md-progress-circular ng-show='$ctrl.bigScreenService.bigScreenItem.loading_chart' md-diameter="90"></md-progress-circular>
             <canvas ng-show='!$ctrl.bigScreenService.bigScreenItem.loading_chart' id="line" class="chart chart-line" chart-data="$ctrl.bigScreenService.bigScreenItem.chart_data"
@@ -127,8 +128,8 @@
 
         <!-- ==================================================RANK========================================================================-->
 
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric'>#{{$ctrl.bigScreenService.bigScreenItem.current.rank }}</div>
 
@@ -142,8 +143,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================SUPPLY========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric'>{{$ctrl.bigScreenService.bigScreenItem.current.total_supply}}</div>
 
@@ -157,8 +158,8 @@
             </md-grid-tile-footer>
         </md-grid-tile>
         <!-- ==================================================MARKET CAP========================================================================-->
-        <md-grid-tile  class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7"
-            md-colspan-md="6" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
+        <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
+            md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
             <div class='metric'>${{$ctrl.bigScreenService.bigScreenItem.current.market_cap_usd}}</div>
 
@@ -173,4 +174,11 @@
         </md-grid-tile>
 
     </md-grid-list>
+
 </div>
+<md-toolbar class='canvas'>
+    <div layout="row" layout-align="center center" flex>
+        Canvas 23 Studios
+        <i class="material-icons md-18">copyright</i>
+    </div>
+</md-toolbar>
