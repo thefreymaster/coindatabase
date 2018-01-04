@@ -2,10 +2,12 @@ app.controller('BigScreenController', function (bigScreenService) {
      var controller = this;
      controller.bigScreenService = bigScreenService;
      controller.loadingPrice = false;
+
+     controller.data = [];
+ 
+
      controller.series = ['Bitcoin'];
-        controller.data = [
-                controller.historic_prices
-        ];
+
         controller.onClick = function (points, evt) {
             console.log(points, evt);
         };
@@ -31,7 +33,7 @@ app.controller('BigScreenController', function (bigScreenService) {
             },
             elements: {
                     point: {
-                        radius: 0
+                        radius: 5
                     }
                 },
         };

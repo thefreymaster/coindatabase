@@ -10,6 +10,14 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
     service.screenIsLarge = $mdMedia('lg');
 
 
+    service.getTopCryptos = function(){
+        return $http.get('/api/top_cryptos/').then(function(response){
+            console.log(response);
+            return response;
+        })
+    }
+    
+
     service.getAllCryptos = function () {
         return $http.get('/api/all').then(function (response) {
             var all = [];
@@ -38,6 +46,16 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
         })
     }
 
+    service.getHistoryByDay = function(item){
+        return $http.get('/api/history/byday/'+item).then(function(response){
+            return response;
+        })
+    }
+
+
+
+    
+
 
 
     service.getTopVolumns = function(){
@@ -57,6 +75,8 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
 
         });
     }
+
+
     
 
 }])

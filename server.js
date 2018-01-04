@@ -14,7 +14,7 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
-var port = 4000;
+var port = 5000;
 app.listen(process.env.PORT || port, function () { 
     console.log('Running REST HTTPS server on port: '+port);
 });
@@ -28,6 +28,19 @@ app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, '/public', 'index.html'));
 });
 
+app.get('/api/top_cryptos', function(req, res){
+
+    var options = { 
+            method: 'GET',
+            url: 'https://api.coinmarketcap.com/v1/ticker/'
+        };
+
+    request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+        res.json(JSON.parse(body));
+    });
+
+});
 
 app.get('/api/all', function(req, res){
 
@@ -93,6 +106,33 @@ app.get('/api/current_price/:symbol', function(req, res){
             });
         
         });
+
+    app.get('/api/history/byday/:symbol', function(req, res){
+        
+
+            var options = { 
+                method: 'GET',
+                url: 'https://min-api.cryptocompare.com/data/histoday?fsym=' + req.params.symbol + '&tsym=USD'
+        
+                };
+        
+            request(options, function (error, response, body) {
+            if (error){
+                throw new Error(error);
+                res.send(500);
+                console.log(error)
+                req.end();
+                
+            }
+            else{
+                res.json(JSON.parse(body));
+            }
+        
+                
+            });
+        
+        });
+
 // app.get('/api/time', function(req, res){
 
 //     var options = { 
