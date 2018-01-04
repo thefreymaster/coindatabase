@@ -74,6 +74,9 @@ md-toolbar {
     text-align: center;
 
 }
+.holdings-margin-correction{
+    margin-top: 18px;
+}
 main{
     min-height:90vh;
 }
@@ -203,10 +206,19 @@ a{
     filter: grayscale(100%)
 } */
 .channel-metrics-container{
-    margin-left:10px;
+    margin: 10px;
 }
 .title{
     color:white;
+}
+md-list{
+    padding: 0px !important;
+}
+.no-margin{
+    margin: 0px !important;
+}
+footer{
+    margin-top:40px;
 }
 
 

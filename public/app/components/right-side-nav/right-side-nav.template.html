@@ -1,24 +1,43 @@
-<div>
-
-    <!--<md-list>
-        <md-subheader class="md-no-sticky">Top 100 Cryptos</md-subheader>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>Search</label>
-            <md-icon><i class="material-icons">&#xE8B6;</i></md-icon>
-            <input ng-model="search">
-            <md-icon><i class="material-icons">&#xE5CD;</i></md-icon>
+<md-list>
+    <md-subheader class="md-no-sticky">Holdings</md-subheader>
+    <md-content layout-padding>
+        <md-input-container class='no-margin'>
+            <md-icon><i class="material-icons">toll</i></md-icon>
+            <label>Amount of Coin</label>
+            <input type='number' ng-model='amount'>
         </md-input-container>
+        <md-input-container class='no-margin'>
+            <md-icon><i class="material-icons">attach_money</i></md-icon>                
+            <label>Total Cost</label>
+            <input type='number' ng-model='cost'>
+        </md-input-container>        
+    </md-content>
+    <div layout='row' layout-align='center center'>
+        <md-button ng-click='$ctrl.reusableDataService.saveHolding($ctrl.bigScreenService.bigScreenItem.current, amount, cost)' flex='100' class='md-primary md-raised md-block'>Add Holding</md-button>           
+    </div>
+    <md-divider></md-divider>
+
+    <!-- <md-input-container class="md-block" flex-gt-xs>
+        <label>Search</label>
+        <md-icon>
+            <i class="material-icons">&#xE8B6;</i>
+        </md-icon>
+        <input ng-model="search">
+        <md-icon>
+            <i class="material-icons">&#xE5CD;</i>
+        </md-icon>
+    </md-input-container> -->
+    <md-divider></md-divider>
+    <md-list-item ng-if='holding.crypto.id == $ctrl.bigScreenService.bigScreenItem.current.id' class="md-3-line" ng-repeat='holding in $ctrl.reusableDataService.$storage.holdings'>
+        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{holding.crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
+        <div class="md-list-item-text" layout="column">     
+            <h3 ng-class='{"gain": holding.amount*holding.crypto.price_usd > holding.cost, "loss": holding.amount*holding.crypto.price_usd < holding.cost}'>{{(holding.amount*holding.crypto.price_usd)-holding.cost | currency: ($): 2}} <i ng-class='{"loss-icon": holding.cost > holding.amount*holding.crypto.price_usd}' class="material-icons md-10">&#xE86B;</i></h3>
+            <h4>Cost: {{holding.cost | currency: ($): 2}}</h4>
+            <h4>Value: {{holding.amount*holding.crypto.price_usd | currency: ($): 2}}</h4>
+            
+            <p>{{holding.amount}}{{holding.crypto.symbol}}</p>
+        </div>
         <md-divider></md-divider>
-        <md-list-item class="md-2-line" ng-repeat='crypto in $ctrl.cryptoObject.all | filter:search | orderBy: crypto.SortOrder' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto)">
-            <img ng-src="http://www.cryptocompare.com{{crypto.ImageUrl}}" class="md-avatar" alt="{{item.who}}" />
-            <div class="md-list-item-text" layout="column">
-                <h3>{{crypto.Symbol}}</h3>
-                <h4>{{crypto.CoinName}}</h4>
+    </md-list-item>
 
-            </div>
-             <md-divider></md-divider>
-        </md-list-item>
-        
-    </md-list>-->
-
-</div>
+</md-list>

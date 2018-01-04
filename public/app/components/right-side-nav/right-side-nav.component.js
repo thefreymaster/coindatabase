@@ -1,4 +1,4 @@
 app.component('rightSideNav', {
      controller: "RightSideNavController",
-     templateUrl: '/app/components/side-nav-items/side-nav-items.template.html'
+     templateUrl: '/app/components/right-side-nav/right-side-nav.template.html'
  })

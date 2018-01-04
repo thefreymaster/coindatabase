@@ -12,6 +12,10 @@
             <h4>{{$ctrl.bigScreenService.bigScreenItem.current.symbol}}</h4>
 
         </div>
+        <div flex></div>
+        <md-button ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='md-raised md-primary holdings-margin-correction'>
+            Holdings
+        </md-button>
         <md-divider></md-divider>
     </md-list-item>
     <md-list-item class="md-2-line">
@@ -21,6 +25,7 @@
             </h1>
 
         </div>
+        
         <md-divider></md-divider>
     </md-list-item>
     <md-list-item class="md-2-line">

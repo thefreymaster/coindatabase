@@ -94,27 +94,23 @@
     </header>
 
     <main layout="row">
-        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="screenIsExtraSmall == false" md-whiteframe="2">
+        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2">
             <side-nav-items></side-nav-items>
         </md-sidenav>
         <md-content flex='100'>
             <big-screen hide-xs hide-sm hide-md></big-screen>
-            <big-screen-mobile  hide-lg hide-xl></big-screen-mobile>
-        </md-content>
-
-        <!--<md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="true" md-whiteframe="2">
-            <right-side-nav></right-side-nav>
-        </md-sidenav>-->
-    </main>
-    <footer >
-        <md-toolbar class="md-scroll-shrink canvas" md-whiteframe="4">
+            <big-screen-mobile hide-lg hide-xl></big-screen-mobile>
             <div layout="row" layout-align="center center" flex>
                 Canvas 23 Studios
                 <i class="material-icons md-18">copyright</i>
             </div>
-        </md-toolbar>
+        </md-content>
 
-    </footer>
+        <md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2">
+            <right-side-nav></right-side-nav>
+        </md-sidenav>
+    </main>
+
 
 </body>
 

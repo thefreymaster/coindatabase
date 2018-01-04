@@ -5,7 +5,12 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     service.bigScreenService = bigScreenService;
     service.$storage = $localStorage;
 
-    service.cryptoObject = { all: {}, top_volumns: {}, top_cryptos: {}, tracked_cryptos: [] };
+    service.cryptoObject = { 
+        all: {}, 
+        top_volumns: {}, 
+        top_cryptos: {}, 
+        tracked_cryptos: []
+    };
 
 
     var topCryptosPromise = service.httpService.getTopCryptos();
@@ -17,6 +22,8 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].total_supply = MoneyFormat(service.cryptoObject.top_cryptos[h].total_supply);   
             service.cryptoObject.top_cryptos[h].percent_change_24h = Number(service.cryptoObject.top_cryptos[h].percent_change_24h);
             service.cryptoObject.top_cryptos[h].rank = Number(service.cryptoObject.top_cryptos[h].rank);
+            service.cryptoObject.top_cryptos[h].price_usd = Number(service.cryptoObject.top_cryptos[h].price_usd);
+            
             service.cryptoObject.top_cryptos[h].tracked = false;
             if(service.$storage.tracked_cryptos != undefined)
             {
@@ -35,6 +42,22 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
         console.log(service.cryptoObject);
     })
+
+    service.saveHolding = function(coin, amount, cost){
+        
+        if(service.$storage.holdings == undefined)
+        {
+            service.$storage.holdings = [];
+            service.$storage.holdings.push(coin);
+            console.log(service.$storage.holdings);
+            service.$storage.holdings.splice(0, 1);
+        }
+        else{
+            service.$storage.holdings.push({crypto: coin, amount: amount, cost: cost});
+        }
+
+        console.log(service.$storage.holdings)
+    }
 
     service.trackCoin = function (coin) {
         console.log(coin);
