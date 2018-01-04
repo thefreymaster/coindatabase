@@ -18,14 +18,18 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].percent_change_24h = Number(service.cryptoObject.top_cryptos[h].percent_change_24h);
             service.cryptoObject.top_cryptos[h].rank = Number(service.cryptoObject.top_cryptos[h].rank);
             service.cryptoObject.top_cryptos[h].tracked = false;
-            for(d=0;d<service.$storage.tracked_cryptos.length;d++)
+            if(service.$storage.tracked_cryptos != undefined)
             {
-                if(service.cryptoObject.top_cryptos[h].id == service.$storage.tracked_cryptos[d].id)
+                for(d=0;d<service.$storage.tracked_cryptos.length;d++)
                 {
-                    service.cryptoObject.top_cryptos[h].tracked = true;                 
-                    service.cryptoObject.tracked_cryptos.push(service.$storage.tracked_cryptos[d]);
+                    if(service.cryptoObject.top_cryptos[h].id == service.$storage.tracked_cryptos[d].id)
+                    {
+                        service.cryptoObject.top_cryptos[h].tracked = true;                 
+                        service.cryptoObject.tracked_cryptos.push(service.$storage.tracked_cryptos[d]);
+                    }
                 }
             }
+
             
         }
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
