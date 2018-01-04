@@ -59,6 +59,12 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         console.log(service.$storage.holdings)
     }
 
+    service.deleteHolding = function(index)
+    {
+        service.$storage.holdings.splice(index, 1)
+        console.log(service.$storage.holdings);
+    }
+
     service.trackCoin = function (coin) {
         console.log(coin);
         console.log(service.cryptoObject);
