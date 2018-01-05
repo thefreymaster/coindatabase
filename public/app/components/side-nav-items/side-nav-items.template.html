@@ -17,7 +17,7 @@
         </div>
         <md-divider></md-divider>
         <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracked Coins</md-subheader>
-        <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos | orderBy: $ctrl.orderByTerm: $ctrl.reverseStatus' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
+        <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
             <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{crypto.symbol}}</h3>
