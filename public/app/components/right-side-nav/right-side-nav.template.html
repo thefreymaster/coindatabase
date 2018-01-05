@@ -6,19 +6,19 @@
                 <i class="material-icons">toll</i>
             </md-icon>
             <label>Amount of Coin</label>
-            <input ng-change='$ctrl.calculateCost($ctrl.bigScreenService.bigScreenItem.current.price_usd, $ctrl.amount)' type='number'
-                ng-model='$ctrl.amount'>
+            <input ng-change='$ctrl.calculateCost($ctrl.bigScreenService.bigScreenItem.current.price_usd, $ctrl.bigScreenService.bigScreenItem.add_holding_metrics.amount)' type='number'
+                ng-model='$ctrl.bigScreenService.bigScreenItem.add_holding_metrics.amount'>
         </md-input-container>
         <md-input-container class='no-margin'>
             <md-icon>
                 <i class="material-icons">attach_money</i>
             </md-icon>
             <label>Total Cost</label>
-            <input type='number' ng-model='$ctrl.cost'>
+            <input type='number' ng-model='$ctrl.bigScreenService.bigScreenItem.add_holding_metrics.cost'>
         </md-input-container>
     </md-content>
     <div layout='row' layout-align='center center'>
-        <md-button ng-click='$ctrl.reusableDataService.saveHolding($ctrl.bigScreenService.bigScreenItem.current, $ctrl.amount, $ctrl.cost)'
+        <md-button ng-click='$ctrl.reusableDataService.saveHolding($ctrl.bigScreenService.bigScreenItem.current, $ctrl.bigScreenService.bigScreenItem.add_holding_metrics.amount, $ctrl.bigScreenService.bigScreenItem.add_holding_metrics.cost)'
             flex='100' class='md-primary md-raised md-block'>Add Holding</md-button>
     </div>
     <md-divider></md-divider>

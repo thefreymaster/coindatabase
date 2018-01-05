@@ -14,7 +14,11 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         chart_labels: [],
         chart_color: ['#ff7043'],
         loading_chart: true,
-        holdings: []
+        holdings: [],
+        add_holding_metrics: {
+            cost: '',
+            amount: ''
+        }
     };
 
     service.openHoldingsMenu = function(){
@@ -25,6 +29,8 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         service.bigScreenItem.chart_data = [];
         service.bigScreenItem.chart_labels = [];
         service.bigScreenItem.holdings = [];
+        service.bigScreenItem.add_holding_metrics.cost = '';
+        service.bigScreenItem.add_holding_metrics.amount = '';
         
 
         $mdSidenav('left').close();

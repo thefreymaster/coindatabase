@@ -5,7 +5,7 @@ app.controller('RightSideNavController', function (httpService, bigScreenService
     controller.reusableDataService = reusableDataService;
 
     controller.calculateCost = function(usdPrice, amount){
-        controller.cost = amount*usdPrice;
+        controller.bigScreenService.bigScreenItem.add_holding_metrics.cost = amount*usdPrice;
         
     }
     // controller.cryptoObject = { all: {} };

@@ -5,8 +5,10 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     service.bigScreenService = bigScreenService;
     service.$storage = $localStorage;
 
-    service.cryptoObject = { 
-        all: {}, 
+    service.cost;
+    service.amount;
+
+    service.cryptoObject = {  
         top_volumns: {}, 
         top_cryptos: {}, 
         tracked_cryptos: []
