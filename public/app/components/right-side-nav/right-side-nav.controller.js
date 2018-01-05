@@ -1,4 +1,4 @@
-app.controller('RightSideNavController', function (httpService, bigScreenService, reusableDataService) {
+app.controller('RightSideNavController', function (httpService, bigScreenService, reusableDataService, $filter) {
     var controller = this;
     controller.httpService = httpService;
     controller.bigScreenService = bigScreenService;
@@ -6,6 +6,7 @@ app.controller('RightSideNavController', function (httpService, bigScreenService
 
     controller.calculateCost = function(usdPrice, amount){
         controller.bigScreenService.bigScreenItem.add_holding_metrics.cost = amount*usdPrice;
+        $filter('number')(controller.bigScreenService.bigScreenItem.add_holding_metrics.cost, 2)
         
     }
     // controller.cryptoObject = { all: {} };

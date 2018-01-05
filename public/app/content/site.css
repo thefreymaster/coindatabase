@@ -221,6 +221,14 @@ md-list{
 footer{
     margin-top:40px;
 }
+md-bottom-sheet {
+    background-color: rgb(45, 45, 45) !important;
+    border-top-width: 0px !important;
+}
+.settings-button-padding{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 
 

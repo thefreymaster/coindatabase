@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', function (httpService, bigScreenService, $localStorage) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', function (httpService, bigScreenService, $localStorage, $mdBottomSheet) {
     var service = this;
     console.log('Reusable Data Service');
     service.httpService = httpService;
@@ -13,6 +13,12 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         top_cryptos: {}, 
         tracked_cryptos: []
     };
+
+    service.toggleSettings = function(){
+        $mdBottomSheet.show({
+            template: '<settings-drawer></settings-drawer> '
+          })
+    }
 
 
     var topCryptosPromise = service.httpService.getTopCryptos();
@@ -42,7 +48,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             
         }
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
-        console.log(service.cryptoObject);
+        // console.log(service.cryptoObject);
     })
 
     service.saveHolding = function(coin, amount, cost){

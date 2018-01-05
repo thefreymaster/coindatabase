@@ -20,7 +20,7 @@
             class="md-avatar" />
         <div class="md-list-item-text" layout="column">
             <h3>{{$ctrl.bigScreenService.bigScreenItem.current.name}}</h3>
-            <h4>{{$ctrl.bigScreenService.bigScreenItem.current.symbol}}</h4>
+            <p>{{$ctrl.bigScreenService.bigScreenItem.current.symbol}}</p>
 
         </div>
         <div flex></div>
@@ -118,11 +118,30 @@
         <md-grid-tile class='coindb-card' md-rowspan="4" md-colspan="6" md-rowspan-lg="5" md-colspan-lg="6" md-rowspan-md="7" md-colspan-md="6"
             md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-            <md-progress-circular ng-show='$ctrl.bigScreenService.bigScreenItem.loading_chart' md-diameter="90"></md-progress-circular>
+            <div layout='row' ng-if='$ctrl.bigScreenService.bigScreenItem.loading_chart'  layout-align='center center'>
+                    <md-progress-circular md-diameter="90"></md-progress-circular>
+            </div>
+            
             <canvas ng-show='!$ctrl.bigScreenService.bigScreenItem.loading_chart' id="line" class="chart chart-line" chart-data="$ctrl.bigScreenService.bigScreenItem.chart_data"
                 chart-labels="$ctrl.bigScreenService.bigScreenItem.chart_labels" chart-colors="$ctrl.bigScreenService.bigScreenItem.chart_color"
                 chart-series="$ctrl.series" chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="onClick">
             </canvas>
+
+            <div ng-if='!$ctrl.bigScreenService.bigScreenItem.chart_available' layout='column' layout-align='center center' ng-if='dataTransferService.currentGainer == undefined'>
+                <md-icon>
+                    <i class="material-icons loss md-36">&#xE8C6;</i>
+                </md-icon>
+                <p class='loss'>Graphs Offline</p>
+            </div>
+            <md-grid-tile-footer>
+                <div layout='row'>
+
+                    <h3 class='metrics-title'>Past 31 Days</h3>
+                    <div flex></div>
+
+
+                </div>
+            </md-grid-tile-footer>
             <!--{{$ctrl.bigScreenService.bigScreenItem.chart_data}}-->
         </md-grid-tile>
 

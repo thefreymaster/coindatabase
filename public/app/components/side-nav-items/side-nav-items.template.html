@@ -1,7 +1,18 @@
 <div>
 
     <md-list>
-        <md-subheader class="md-no-sticky">Top 50 Coins</md-subheader>
+        <md-subheader class="md-no-sticky">
+            <div layout='row' layout-align='start center'>
+                <div >
+                    <div>Top 150 Coins</div>
+                </div>
+                <div flex></div>
+                <md-button ng-click='$ctrl.reusableDataService.toggleSettings()' class="md-icon-button">
+                        <i class="material-icons">&#xE8B8;</i>
+                </md-button>
+            </div>
+            
+        </md-subheader>
         <md-input-container class="md-block" flex-gt-xs>
             <label>Search</label>
             <md-icon><i class="material-icons">&#xE8B6;</i></md-icon>
@@ -17,12 +28,12 @@
         </div>
         <md-divider></md-divider>
         <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracked Coins</md-subheader>
-        <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
+        <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos track by crypto.id' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
             <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
             <div class="md-list-item-text" layout="column">
-                <h3>{{crypto.symbol}}</h3>
-                <p>{{crypto.name}}</p>
-                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
+                <h3>{{::crypto.symbol}}</h3>
+                <p>{{::crypto.name}}</p>
+                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{::crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
                 
             </div>
             <div flex></div>
@@ -38,9 +49,9 @@
         <md-list-item ng-if="crypto.tracked == false" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.top_cryptos | filter:search | orderBy: $ctrl.orderByTerm: $ctrl.reverseStatus' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
             <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
             <div class="md-list-item-text" layout="column">
-                <h3>{{crypto.symbol}}</h3>
-                <p>{{crypto.name}}</p>
-                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
+                <h3>{{::crypto.symbol}}</h3>
+                <p>{{::crypto.name}}</p>
+                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{::crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
                 
             </div>
             <div flex></div>
