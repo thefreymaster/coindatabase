@@ -73,7 +73,6 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.$storage.holdings = [];
             service.$storage.holdings.push(coin);
             console.log(service.$storage.holdings);
-            service.$storage.holdings.splice(0, 1);
         }
         else{
             service.$storage.holdings.push({crypto: coin, amount: amount, cost: cost});
