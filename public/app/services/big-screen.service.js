@@ -14,6 +14,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         chart_labels: [],
         chart_color: ['#ff7043'],
         loading_chart: true,
+        chart_available: true,
         holdings: [],
         add_holding_metrics: {
             cost: '',
@@ -37,7 +38,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         service.bigScreenItem.loading = true;
         service.bigScreenItem.loading_chart = true;
         service.bigScreenItem.price = '';
-        service.bigScreenItem.active_side_nav_index = index;
+        service.bigScreenItem.active_side_nav_index = newItem.id;
 
 
         // var currentPriceProm = service.httpService.getCurrentPrice(newItem.Symbol);
@@ -52,6 +53,10 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
 
         var historyByDayPromise = service.httpService.getHistoryByDay(newItem.symbol)
         historyByDayPromise.then(function (results2) {
+            if(results2.data.Response == 'Error'){
+                console.error("API endpoint currently unavailable for graph data.");
+                service.bigScreenItem.chart_available = false;
+            }
             service.bigScreenItem.historic_prices = results2.data.Data;
             for (k = 0; k < service.bigScreenItem.historic_prices.length; k++) {
                 service.bigScreenItem.chart_data.push(service.bigScreenItem.historic_prices[k].close);
@@ -73,7 +78,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
 
         service.bigScreenItem.loading = false;
         service.bigScreenItem.loading_chart = false;
-        console.log(service.bigScreenItem);
+        // console.log(service.bigScreenItem);
     }
 
     

@@ -12,7 +12,7 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
 
     service.getTopCryptos = function(){
         return $http.get('/api/top_cryptos/').then(function(response){
-            console.log(response);
+            // console.log(response);
             return response;
         })
     }
@@ -25,10 +25,9 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
             for(prop in response.data.Data)
             {
                 sortOrder = parseInt(response.data.Data[prop].SortOrder)
-                if(sortOrder <= 50)
-                {
+
                     all.push(response.data.Data[prop])
-                }
+                
             }
             return all;
 

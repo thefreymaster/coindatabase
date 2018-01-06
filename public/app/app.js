@@ -22,13 +22,6 @@ $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain';
 
 $stateProvider.state('speedtest', {
                 url: '/',
-                views: {
-                    
-                    'speedtestview': {
-                        templateUrl: "app/views/quote.view.html",
-                        controller: 'QuoteController'
-                    }
-                }
             })
   $urlRouterProvider.otherwise('/');
 

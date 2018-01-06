@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', function (httpService, bigScreenService, $localStorage) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav) {
     var service = this;
     console.log('Reusable Data Service');
     service.httpService = httpService;
@@ -11,8 +11,17 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     service.cryptoObject = {  
         top_volumns: {}, 
         top_cryptos: {}, 
-        tracked_cryptos: []
+        tracked_cryptos: [],
+        major_spikes: [],
+        minor_spikes: []
     };
+
+    service.toggleSettings = function(){
+        $mdSidenav('left').toggle();
+        $mdBottomSheet.show({
+            template: '<settings-drawer></settings-drawer> '
+          })
+    }
 
 
     var topCryptosPromise = service.httpService.getTopCryptos();
@@ -27,6 +36,8 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].price_usd = Number(service.cryptoObject.top_cryptos[h].price_usd);
             
             service.cryptoObject.top_cryptos[h].tracked = false;
+            service.cryptoObject.top_cryptos[h].major_spike = false;
+            
             if(service.$storage.tracked_cryptos != undefined)
             {
                 for(d=0;d<service.$storage.tracked_cryptos.length;d++)
@@ -38,7 +49,11 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                     }
                 }
             }
-
+            if(service.cryptoObject.top_cryptos[h].percent_change_24h > 100)
+            {
+                service.cryptoObject.top_cryptos[h].major_spike = true;
+                service.cryptoObject.major_spikes.push(service.cryptoObject.top_cryptos[h]);
+            }
             
         }
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);

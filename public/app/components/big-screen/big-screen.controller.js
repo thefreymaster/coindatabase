@@ -1,6 +1,7 @@
-app.controller('BigScreenController', function (bigScreenService) {
+app.controller('BigScreenController', function (bigScreenService, mediaService) {
      var controller = this;
      controller.bigScreenService = bigScreenService;
+     controller.mediaService = mediaService;
      controller.loadingPrice = false;
 
      controller.data = [];
