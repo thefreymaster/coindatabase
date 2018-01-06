@@ -38,7 +38,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         service.bigScreenItem.loading = true;
         service.bigScreenItem.loading_chart = true;
         service.bigScreenItem.price = '';
-        service.bigScreenItem.active_side_nav_index = index;
+        service.bigScreenItem.active_side_nav_index = newItem.id;
 
 
         // var currentPriceProm = service.httpService.getCurrentPrice(newItem.Symbol);
