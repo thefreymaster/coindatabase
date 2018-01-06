@@ -7,6 +7,11 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
     service.cost;
     service.amount;
+    if(service.cryptoObject != undefined)
+    {
+        service.cryptoObject = {};
+    }
+    
 
     service.cryptoObject = {  
         top_volumns: {}, 
@@ -32,6 +37,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].market_cap_usd = MoneyFormat(service.cryptoObject.top_cryptos[h].market_cap_usd);
             service.cryptoObject.top_cryptos[h].total_supply = MoneyFormat(service.cryptoObject.top_cryptos[h].total_supply);   
             service.cryptoObject.top_cryptos[h].percent_change_24h = Number(service.cryptoObject.top_cryptos[h].percent_change_24h);
+
             service.cryptoObject.top_cryptos[h].rank = Number(service.cryptoObject.top_cryptos[h].rank);
             service.cryptoObject.top_cryptos[h].price_usd = Number(service.cryptoObject.top_cryptos[h].price_usd);
             
@@ -45,7 +51,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                     if(service.cryptoObject.top_cryptos[h].id == service.$storage.tracked_cryptos[d].id)
                     {
                         service.cryptoObject.top_cryptos[h].tracked = true;                 
-                        service.cryptoObject.tracked_cryptos.push(service.$storage.tracked_cryptos[d]);
+                        service.cryptoObject.tracked_cryptos.push(service.cryptoObject.top_cryptos[h]);
                     }
                 }
             }
