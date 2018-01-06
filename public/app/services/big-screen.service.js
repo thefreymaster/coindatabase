@@ -78,7 +78,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
 
         service.bigScreenItem.loading = false;
         service.bigScreenItem.loading_chart = false;
-        // console.log(service.bigScreenItem);
+        console.log(service.bigScreenItem);
     }
 
     

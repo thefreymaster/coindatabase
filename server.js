@@ -32,6 +32,7 @@ app.get('/api/top_cryptos', function(req, res){
 
     var options = { 
             method: 'GET',
+            cache: false,
             url: 'https://api.coinmarketcap.com/v1/ticker/?limit=150'
         };
 
@@ -41,11 +42,12 @@ app.get('/api/top_cryptos', function(req, res){
     });
 
 });
-
+ 
 app.get('/api/all', function(req, res){
 
     var options = { 
             method: 'GET',
+            cache: false,
             url: 'https://min-api.cryptocompare.com/data/all/coinlist'
         };
 
@@ -62,6 +64,7 @@ app.get('/api/current_price/:symbol', function(req, res){
     console.log(symbol);
     var options = { 
         method: 'GET',
+        cache: false,
         url: 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.symbol + '&tsyms=USD'
 
         };
@@ -78,6 +81,7 @@ app.get('/api/current_price/:symbol', function(req, res){
 
         var options = { 
             method: 'GET',
+            cache: false,
             url: 'https://min-api.cryptocompare.com/data/top/volumes?tsym=ETH'
     
             };
@@ -95,6 +99,7 @@ app.get('/api/current_price/:symbol', function(req, res){
 
             var options = { 
                 method: 'GET',
+                cache: false,
                 url: 'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=' + req.params.symbols + '&tsyms=USD'
         
                 };
@@ -112,6 +117,7 @@ app.get('/api/current_price/:symbol', function(req, res){
 
             var options = { 
                 method: 'GET',
+                cache: false,
                 url: 'https://min-api.cryptocompare.com/data/histoday?fsym=' + req.params.symbol + '&tsym=USD'
         
                 };
