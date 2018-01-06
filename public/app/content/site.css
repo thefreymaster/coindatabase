@@ -212,6 +212,9 @@ a{
 .title{
     color:white;
 }
+.button-correction{
+    margin-top:20px !important;
+}
 md-list{
     padding: 0px !important;
 }

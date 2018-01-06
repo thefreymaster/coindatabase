@@ -1,7 +1,8 @@
-angular.module('coindbApp').controller('AppController', ['$scope', '$mdMedia', '$mdSidenav', function($scope, $mdMedia, $mdSidenav){
+angular.module('coindbApp').controller('AppController', ['$scope', '$mdMedia', '$mdSidenav', 'bigScreenService', function($scope, $mdMedia, $mdSidenav, bigScreenService){
 
 
         $scope.$mdMedia = $mdMedia;
+        $scope.bigScreenService = bigScreenService;
 
         $scope.screenIsExtraSmall = $mdMedia('xs');
         $scope.screenIsSmall = $mdMedia('sm');
