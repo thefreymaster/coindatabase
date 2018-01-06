@@ -11,7 +11,9 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     service.cryptoObject = {  
         top_volumns: {}, 
         top_cryptos: {}, 
-        tracked_cryptos: []
+        tracked_cryptos: [],
+        major_spikes: [],
+        minor_spikes: []
     };
 
     service.toggleSettings = function(){
@@ -44,11 +46,14 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                     }
                 }
             }
-
+            if(service.cryptoObject.top_cryptos[h].percent_change_24h > 100)
+            {
+                service.cryptoObject.major_spikes.push(service.cryptoObject.top_cryptos[h]);
+            }
             
         }
         service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
-        // console.log(service.cryptoObject);
+        console.log(service.cryptoObject);
     })
 
     service.saveHolding = function(coin, amount, cost){

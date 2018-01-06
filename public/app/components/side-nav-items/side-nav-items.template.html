@@ -26,6 +26,33 @@
             <md-button flex='50' ng-click='$ctrl.changeOrderByTerm("rank")' class='md-block md-raised md-primary'>Rank</md-button>
             
         </div>
+
+        <md-divider></md-divider>
+        <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.major_spikes.length != 0" class="md-no-sticky">Major Spikes</md-subheader>
+        <md-list-item ng-if="$ctrl.reusableDataService.cryptoObject.major_spikes.length != 0 && $index < 3" class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.major_spikes track by crypto.id | orderBy: "percent_change_24h": false' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
+            <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{::crypto.symbol}}</h3>
+                <p>{{::crypto.name}}</p>
+                <p ng-class='{"gain": crypto.percent_change_24h > 0, "loss": crypto.percent_change_24h < 0}'>{{::crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i></p>
+                
+            </div>
+            <div flex></div>
+            <md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto)'>
+                <i ng-class='{"rotate-icon": crypto.tracked == true, "unrotate-icon": crypto.tracked == false}' class="material-icons">add</i>
+                <md-tooltip>Track Coin</md-tooltip>
+            </md-button>
+            
+                <md-divider></md-divider>
+        </md-list-item>
+        <md-divider  layout-padding></md-divider>
+        <md-divider></md-divider>
+
+
+
+
+
+
         <md-divider></md-divider>
         <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracked Coins</md-subheader>
         <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == $index}' class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos track by crypto.id' ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
