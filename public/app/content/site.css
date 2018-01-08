@@ -163,6 +163,9 @@ a{
 md-grid-tile-footer{
     background: #242424 !important;
 }
+md-list-item.md-3-line{
+    height: auto !important;
+    }
 
 .align-correction{
     position: absolute;

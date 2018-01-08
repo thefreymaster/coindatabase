@@ -14,7 +14,7 @@
 
 </div>
 <!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
-<md-list ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
+<md-list ng-cloak ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
     <md-list-item class="md-2-line">
         <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{$ctrl.bigScreenService.bigScreenItem.current.id}}.png"
             class="md-avatar" />
@@ -31,7 +31,7 @@
     </md-list-item>
 
 </md-list>
-<div ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
+<div ng-cloak ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
     <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="0px" md-row-height="4:3"
         class='report-gutter'>
         <!-- ==================================================NAME========================================================================-->
