@@ -28,11 +28,11 @@
 
         <md-grid-tile class='coindb-card' md-rowspan="8" md-colspan="6" md-rowspan-lg="8" md-colspan-lg="6" md-rowspan-md="8"
             md-colspan-md="12" md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
-
-            <md-list flex='100'  layout-align='center start'>
+            
+            <md-list class='align-correction' flex='100'  layout-align='center start'>
                 <md-divider></md-divider>
                 <md-list-item
-                    class="md-3-line" ng-repeat='holding in $ctrl.$storage.holdings'
+                    class="md-3-line list-item-padding" ng-repeat='holding in $ctrl.$storage.holdings'
                     ng-click="$ctrl.bigScreenService.changeBigScreenItem(holding.crypto, $index)">
                     <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{::holding.crypto.id}}.png" class="md-avatar" alt="{{item.who}}"/>
                     <div class="md-list-item-text" layout="column">

@@ -153,6 +153,15 @@ a{
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.align-correction{
+    position: absolute;
+    left: 0px;
+    top: 7px;
+    min-width: 100%;
+}
+.list-item-padding div{
+    padding:10px;
+}
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;
