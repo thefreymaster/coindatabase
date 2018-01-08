@@ -6,6 +6,8 @@ app.controller('HoldingsController', function (httpService, bigScreenService, re
     controller.$storage = $localStorage;
     controller.state = $state;
 
+    // controller.reusableDataService.calculateAllPercentsMaster();
+
     console.log(controller.$storage)
     if(controller.$storage.holdings == undefined){
         controller.bigScreenService.changeBigScreenItem(controller.reusableDataService.cryptoObject.top_cryptos[0], 0);

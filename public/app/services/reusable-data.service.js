@@ -97,21 +97,8 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
         }
 
-        for (r = 0; r < service.cryptoObject.top_cryptos.length; r++) {
-            if (service.$storage.holdings != undefined) {
-                for (u = 0; u < service.$storage.holdings.length; u++) {
-                    if (service.cryptoObject.top_cryptos[r].id == service.$storage.holdings[u].crypto.id) {
-                        service.calculateIndividualPercents('oneHour', service.cryptoObject.top_cryptos[r].percent_change_1h, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
-                        service.calculateIndividualPercents('tfHour', service.cryptoObject.top_cryptos[r].percent_change_24h, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
-                        service.calculateIndividualPercents('sevenDay', service.cryptoObject.top_cryptos[r].percent_change_7d, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
 
-                    }
-                }
-            }
-
-        }
-        service.calculateTotalPercents();
-
+        service.calculateAllPercentsMaster();
         if (service.bigScreenService.bigScreenItem.current == "") {
             if (service.$storage.holdings == undefined) {
                     service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
@@ -127,43 +114,73 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         service.cryptoObject.loading_holdings = false
 
         // service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
-        // console.log(service.tempPercents)
-        // console.log(service.cryptoObject);
-        // console.log(service.$storage.holdings);
+        console.log(service.tempPercents)
+        console.log(service.cryptoObject);
+        console.log(service.$storage.holdings);
 
     })
 
-    service.tempPercents = [];
+    service.tempPercents = {
+        oneHour: [],
+        tfHour: [],
+        sevenDay: []
+    };
     var tempTotal = 0;
 
-    var temp1hr;
-    var temp24hr;
-    var temp1day;
+    var temp1hr = 0;
+    var temp24hr = 0;
+    var temp1day = 0;
+
+    service.calculateAllPercentsMaster = function(){
+        for (r = 0; r < service.cryptoObject.top_cryptos.length; r++) {
+            if (service.$storage.holdings != undefined) {
+                for (u = 0; u < service.$storage.holdings.length; u++) {
+                    if (service.cryptoObject.top_cryptos[r].id == service.$storage.holdings[u].crypto.id) {
+                        service.calculateIndividualPercents('oneHour', service.cryptoObject.top_cryptos[r].percent_change_1h, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
+                        service.calculateIndividualPercents('tfHour', service.cryptoObject.top_cryptos[r].percent_change_24h, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
+                        service.calculateIndividualPercents('sevenDay', service.cryptoObject.top_cryptos[r].percent_change_7d, service.$storage.holdings[u].cost, service.cryptoObject.holdings_metrics.total_holdings_cost, u)
+
+                    }
+                }
+            }
+
+        }
+        service.calculateTotalPercents();
+
+    }
 
     service.calculateTotalPercents = function () {
-        for (u = 0; u < service.tempPercents.length; u++) {
-            if (service.tempPercents[u].oneHour != undefined) {
-                temp1hr = service.cryptoObject.holdings_metrics.percent_change_1h + service.tempPercents[u].oneHour;
+        for (u = 0; u < service.tempPercents.oneHour.length; u++) {
+            if (service.tempPercents.oneHour[u] != undefined) {
+                temp1hr = temp1hr + service.tempPercents.oneHour[u];
             }
-            else if (service.tempPercents[u].tfHour != undefined) {
-                temp24hr = service.cryptoObject.holdings_metrics.percent_change_24h + service.tempPercents[u].tfHour;
+
+        }
+        for (y = 0; y < service.tempPercents.tfHour.length; y++) {
+
+            if (service.tempPercents.tfHour[y] != undefined) {
+                temp24hr = temp24hr + service.tempPercents.tfHour[y];
             }
-            else if (service.tempPercents[u].sevenDay != undefined) {
-                temp1day = service.cryptoObject.holdings_metrics.percent_change_7d + service.tempPercents[u].sevenDay;
+
+        }
+        for (o = 0; o < service.tempPercents.sevenDay.length; o++) {
+
+            if (service.tempPercents.sevenDay[o] != undefined) {
+                temp1day = temp1day + service.tempPercents.sevenDay[o];
             }
         }
         service.calculatePortionPercents();
     }
 
     service.calculatePortionPercents = function () {
-        service.cryptoObject.holdings_metrics.percent_change_1h = temp1hr / service.tempPercents.length;
-        service.cryptoObject.holdings_metrics.percent_change_24h = temp24hr / service.tempPercents.length;
-        service.cryptoObject.holdings_metrics.percent_change_7d = temp1day / service.tempPercents.length;
+        service.cryptoObject.holdings_metrics.percent_change_1h = temp1hr / service.tempPercents.oneHour.length;
+        service.cryptoObject.holdings_metrics.percent_change_24h = temp24hr / service.tempPercents.tfHour.length;
+        service.cryptoObject.holdings_metrics.percent_change_7d = temp1day / service.tempPercents.sevenDay.length;
     }
 
     service.calculateIndividualPercents = function (type, percentChange, initialCost, totalCost, index) {
         var portionPercentChange = percentChange * (initialCost / totalCost);
-        service.tempPercents.push({ [type]: portionPercentChange });
+        service.tempPercents[type].push(portionPercentChange);
     }
 
     service.saveHolding = function (coin, amount, cost) {
