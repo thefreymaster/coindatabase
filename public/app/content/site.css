@@ -162,6 +162,10 @@ a{
 .list-item-padding div{
     padding:10px;
 }
+.metric-lg{
+    font-size:36px;
+    font-weight: 300;
+}
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;
