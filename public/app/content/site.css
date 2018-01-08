@@ -153,10 +153,21 @@ a{
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.md-scroll-list{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.bottom-padding-list-item{
+    padding-bottom:42px;
+}
+md-grid-tile-footer{
+    background: #242424 !important;
+}
+
 .align-correction{
     position: absolute;
     left: 0px;
-    top: 7px;
+    top: -2px;
     min-width: 100%;
 }
 .list-item-padding div{
@@ -169,7 +180,7 @@ a{
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #565454;
+    background-color: #b5b5b5;
 }
 .scrollbar::-webkit-scrollbar {
     width: 10px;
