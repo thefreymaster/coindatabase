@@ -14,7 +14,7 @@ var bodyParser = require('body-parser');
 
 
 var app = express();
-var port = 5500;
+var port = 5600;
 app.listen(process.env.PORT || port, function () { 
     console.log('Running REST HTTPS server on port: '+port);
 });
@@ -33,7 +33,7 @@ app.get('/api/top_cryptos', function(req, res){
     var options = { 
             method: 'GET',
             cache: false,
-            url: 'https://api.coinmarketcap.com/v1/ticker/?limit=150'
+            url: 'https://api.coinmarketcap.com/v1/ticker/?limit=200'
         };
 
     request(options, function (error, response, body) {
