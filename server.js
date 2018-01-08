@@ -38,7 +38,7 @@ app.get('/api/top_cryptos', function(req, res){
 
     request(options, function (error, response, body) {
     if (error) throw new Error(error);
-        res.json(JSON.parse(body));
+        res.send(body);
     });
 
 });
@@ -107,7 +107,7 @@ app.get('/api/current_price/:symbol', function(req, res){
             request(options, function (error, response, body) {
             if (error) throw new Error(error);
         
-                res.json(JSON.parse(body));
+                res.send(body);
             });
         
         });

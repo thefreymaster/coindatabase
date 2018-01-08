@@ -19,7 +19,7 @@
     </md-content>
     <div layout='row' layout-align='center center'>
         <md-button ng-click='$ctrl.reusableDataService.saveHolding($ctrl.bigScreenService.bigScreenItem.current, $ctrl.bigScreenService.bigScreenItem.add_holding_metrics.amount, $ctrl.bigScreenService.bigScreenItem.add_holding_metrics.cost)'
-            flex='100' class='md-primary md-raised md-block'>Add Holding</md-button>
+            flex='100' class='db-button'>Add Holding</md-button>
     </div>
     <md-divider></md-divider>
 
@@ -35,8 +35,7 @@
     </md-input-container> -->
     <md-divider></md-divider>
     <md-list-item ng-if='holding.crypto.id == $ctrl.bigScreenService.bigScreenItem.current.id' class="md-3-line" ng-repeat='holding in $ctrl.reusableDataService.$storage.holdings'>
-        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{holding.crypto.id}}.png" class="md-avatar" alt="{{item.who}}"
-        />
+        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{holding.crypto.id}}.png" class="md-avatar" alt="{{item.who}}"/>
         <div class="md-list-item-text" layout="column">
             <h3 ng-class='{"gain": holding.amount*holding.crypto.price_usd > holding.cost, "loss": holding.amount*holding.crypto.price_usd < holding.cost}'>{{(holding.amount*holding.crypto.price_usd)-holding.cost | currency: ($): 2}}
                 <i ng-class='{"loss-icon": holding.cost > holding.amount*holding.crypto.price_usd}' class="material-icons md-10">&#xE86B;</i>

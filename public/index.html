@@ -41,6 +41,11 @@
     <script src="app/scripts/angular-countUp.js"></script>
     <script src="app/scripts/countUp.js"></script>
 
+    <script src="app/services/http.service.js"></script>
+    <script src="app/services/big-screen.service.js"></script>
+    <script src="app/services/reusable-data.service.js"></script>
+    <script src="app/services/media.service.js"></script>
+
     <!--<script src="app/components/winLose/winLose.component.js"></script>
         <script src="app/components/winLose/winLose.controller.js"></script>-->
 
@@ -68,50 +73,57 @@
     <script src="app/components/donate/donate.controller.js"></script>
     <script src="app/components/donate/donate.component.js"></script>
 
-    
-    
+    <script src="app/components/holdings/holdings.controller.js"></script>
+    <script src="app/components/holdings/holdings.component.js"></script>
+
+    <script src="app/components/big-screen-container/big-screen-container.controller.js"></script>
+    <script src="app/components/big-screen-container/big-screen-container.component.js"></script>
+
+
 
     <script src="app/directives/gain-loss-class.directive.js"></script>
 
-    <script src="app/services/http.service.js"></script>
-    <script src="app/services/big-screen.service.js"></script>
-    <script src="app/services/reusable-data.service.js"></script>
-    <script src="app/services/media.service.js"></script>
+
 
     <title>CoinDB</title>
 </head>
 
-    <body ng-cloak ng-controller="AppController" layout="column" layout-fill>
-        <div ng-if='inDevMode'>
-            XS: {{screenIsExtraSmall}} | SM: {{screenIsSmall}} | MD: {{screenIsMedium}} | LG: {{screenIsLarge}} | XL: {{screenIsExtraLarge}}
-        </div>
-        <!--<status-bar></status-bar> -->
-        <header>
-            <md-toolbar md-whiteframe="1">
-                <div class="md-toolbar-tools">
-                    <md-button hide-lg hide-xl ng-disabled='bigScreenService.bigScreenItem.loading' ng-click='openLeftMenu()' class="md-icon-button" aria-label="Settings">
-                        <i class="material-icons">menu</i>
-                    </md-button>
-                    <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/touch-icon-iphone-retina.png" class='logo' alt="logo">
-                    <h2 flex class='title'>CoinDB</h2>
+<body ng-cloak ng-controller="AppController" layout="column" layout-fill>
+    <div ng-if='inDevMode'>
+        XS: {{screenIsExtraSmall}} | SM: {{screenIsSmall}} | MD: {{screenIsMedium}} | LG: {{screenIsLarge}} | XL: {{screenIsExtraLarge}}
+    </div>
+    <!--<status-bar></status-bar> -->
+    <header>
+        <md-toolbar md-whiteframe="1">
+            <div class="md-toolbar-tools">
+                <md-button hide-lg hide-xl ng-disabled='bigScreenService.bigScreenItem.loading' ng-click='openLeftMenu()' class="md-icon-button"
+                    aria-label="Settings">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/touch-icon-iphone-retina.png" class='logo' alt="logo">
+                <h2 flex class='title'>CoinDB</h2>
+                <md-button ng-show='localStorage.holdings != undefined' class='md-icon-button' ng-click='goToHoldings()'>
+                    <i class="material-icons">account_balance</i>
+                    <md-tooltip>Holdings</md-tooltip>
+                </md-button>
+            </div>
+        </md-toolbar>
+    </header>
 
-                </div>
-            </md-toolbar>
-        </header>
+    <main layout="row">
+        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2">
+            <side-nav-items></side-nav-items>
+        </md-sidenav>
+        <md-content flex='100'>
+            <div ui-view='main-area'></div>
+        </md-content>
+        <md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="$mdMedia('gt-lg') && state.current.name != 'holdings'"
+            md-whiteframe="2">
+            <right-side-nav></right-side-nav>
+        </md-sidenav>
+    </main>
+</body>
 
-        <main layout="row">
-            <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2">
-                <side-nav-items></side-nav-items>
-            </md-sidenav>
-            <md-content flex='100'>
-                <big-screen hide-xs hide-sm hide-md></big-screen>
-                <big-screen-mobile hide-lg hide-xl></big-screen-mobile>
-            </md-content>
-            <md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="$mdMedia('gt-lg')" md-whiteframe="2">
-                <right-side-nav></right-side-nav>          
-            </md-sidenav>
-        </main>
-    </body>
 </html>
 
 <script>

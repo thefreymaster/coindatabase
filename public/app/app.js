@@ -1,7 +1,7 @@
-var app = angular.module('coindbApp', ['ui.router', 'ngMaterial', 'ngMessages', 'chart.js', 'countUpModule', 'ngStorage']).config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider, ChartJsProvider){
+var app = angular.module('coindbApp', ['ui.router', 'ngMaterial', 'ngMessages', 'chart.js', 'countUpModule', 'ngStorage']).config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider, ChartJsProvider) {
 
 
-$httpProvider.defaults.headers.post['Content-Type'] = 'text/plain'; 
+  $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain';
 
   // For example: raised button text will be black instead of white.
   $mdThemingProvider.theme('default')
@@ -16,13 +16,27 @@ $httpProvider.defaults.headers.post['Content-Type'] = 'text/plain';
     .accentPalette('deep-orange', {
       'default': '200' // use shade 200 for default, and keep all other shades the same
     });
-    
 
-    
 
-$stateProvider.state('speedtest', {
-                url: '/',
-            })
+
+
+  $stateProvider.state('holdings', {
+    url: '/',
+    views: {
+      'main-area': {
+        template: "<holdings></holdings>"
+      }
+    }
+  })
+
+  $stateProvider.state('quote', {
+    url: '/quote',
+    views: {
+      'main-area': {
+        template: "<big-screen-container></big-screen-container>"
+      }
+    }
+  })
   $urlRouterProvider.otherwise('/');
 
 });
