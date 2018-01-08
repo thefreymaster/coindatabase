@@ -43,7 +43,7 @@
                     </div>
                     <div flex></div>
                     <h3 class='metric-lg' ng-class='{"gain": (holding.amount*holding.crypto.price_usd) > holding.cost, "loss": holding.amount*holding.crypto.price_usd < holding.cost}'>{{::holding.amount*holding.crypto.price_usd-holding.cost | currency:($): 2}} 
-                        <i ng-class='{"loss-icon": (holding.amount*holding.crypto.price_usd) < holding.cost}' class="material-icons md-24">&#xE86B;</i>
+                        <i ng-class='{"loss-icon": (holding.amount*holding.crypto.price_usd) < holding.cost}' class="material-icons md-18">&#xE86B;</i>
                     </h3>
                     <!--<md-button class='md-icon-button' ng-click='$ctrl.reusableDataService.trackCoin(crypto)'>
                         <i ng-class='{"rotate-icon": crypto.tracked == true, "unrotate-icon": crypto.tracked == false}' class="material-icons">add</i>

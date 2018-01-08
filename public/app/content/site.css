@@ -163,8 +163,8 @@ a{
     padding:10px;
 }
 .metric-lg{
-    font-size:36px;
-    font-weight: 300;
+    font-size:24px;
+    font-weight: 900;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
