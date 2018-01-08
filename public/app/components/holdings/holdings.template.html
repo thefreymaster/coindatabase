@@ -83,7 +83,7 @@
         <md-grid-tile class='coindb-card' md-rowspan="2" md-colspan="2" md-rowspan-lg="3" md-colspan-lg="2" md-rowspan-md="7" md-colspan-md="6"
             md-rowspan-sm="8" md-colspan-sm="6" md-rowspan-xs="15" md-colspan-xs="12" class='earnings-card'>
 
-            <div class='metric' ng-class='{"gain": $ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h > 0, "loss": $ctrl.breusableDataService.cryptoObject.holdings_metrics.percent_change_24h < 0}'>{{$ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h | number:2}}%
+            <div class='metric' ng-class='{"gain": $ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h > 0, "loss": $ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h < 0}'>{{$ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h | number:2}}%
                 <i ng-class='{"loss-icon": $ctrl.reusableDataService.cryptoObject.holdings_metrics.percent_change_24h < 0}' class="material-icons">&#xE86B;</i>
             </div>
             <md-grid-tile-footer>
