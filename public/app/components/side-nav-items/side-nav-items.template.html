@@ -1,6 +1,18 @@
 <div>
 
     <md-list>
+        <!--<md-subheader ng-show='$ctrl.localStorage.holdings != undefined' md-ink-ripple='true' class="md-no-sticky hover-pointer"
+            ng-click='$ctrl.goToHoldings()'>
+            <div layout='row' layout-align='start center'>
+                <div>
+                    <div>Holdings</div>
+                </div>
+                <div flex></div>
+                <div>
+                    <i class="material-icons">account_balance</i>
+                </div>
+            </div>
+        </md-subheader>-->
         <md-subheader class="md-no-sticky">
             <div layout='row' layout-align='start center'>
                 <div>
@@ -13,17 +25,7 @@
             </div>
 
         </md-subheader>
-        <md-subheader ng-show='$ctrl.localStorage.holdings != undefined' md-ink-ripple='true' class="md-no-sticky hover-pointer" ng-click='$ctrl.goToHoldings()'>
-            <div layout='row' layout-align='start center'>
-                <div>
-                    <div>Holdings</div>
-                </div>
-                <div flex></div>
-                <div>
-                    <i class="material-icons">account_balance</i>
-                </div>
-            </div>
-        </md-subheader>
+
         <div layout='row'>
             <md-input-container class="md-block" flex-gt-xs>
                 <label>Search</label>

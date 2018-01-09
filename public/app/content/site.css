@@ -180,6 +180,15 @@ md-list-item.md-3-line{
     font-size:24px;
     font-weight: 900;
 }
+.holding_symbol{
+    font-weight: 900;
+        color: #c9c9c9;
+
+}
+.holding_name{
+    font-weight: 900;
+    font-size: 48px;
+}
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -199,9 +208,19 @@ md-list-item.md-3-line{
     font-style: italic;
     
 }
+.coindb-card-holding:hover{
+    cursor:pointer;
+    background-color:rgb(61, 61, 61);
+    transition: background-color 250ms ease-in-out;    
+}
+.img-correction{
+    width:50px;
+}
+
+
 .md-headline-xxl{
-    font-size: 100px;
-    font-weight: 100;
+    font-size: 120px;
+    font-weight: 900;
 }
 .md-content-height{
     min-height: 90vh;

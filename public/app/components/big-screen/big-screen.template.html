@@ -31,6 +31,11 @@
     </md-list-item>
 
 </md-list>
+
+
+
+
+
 <div ng-cloak ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
     <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="0px" md-row-height="4:3"
         class='report-gutter'>
@@ -127,12 +132,6 @@
                 chart-series="$ctrl.series" chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="onClick">
             </canvas>
 
-            <div ng-if='!$ctrl.bigScreenService.bigScreenItem.chart_available' layout='column' layout-align='center center' ng-if='dataTransferService.currentGainer == undefined'>
-                <md-icon>
-                    <i class="material-icons loss md-36">&#xE8C6;</i>
-                </md-icon>
-                <p class='loss'>Graphs Offline</p>
-            </div>
             <md-grid-tile-footer>
                 <div layout='row'>
 

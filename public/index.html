@@ -102,10 +102,12 @@
                 </md-button>
                 <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/touch-icon-iphone-retina.png" class='logo' alt="logo">
                 <h2 flex class='title'>CoinDB</h2>
-                <md-button ng-show='localStorage.holdings != undefined' class='md-icon-button' ng-click='goToHoldings()'>
+                <md-button ng-disabled='$ctrl.reusableDataService.cryptoObject.loading_holdings' ng-show='localStorage.holdings != undefined' ng-click='goToHoldings()'
+                class='md-block'>Holdings</md-button>
+                <!--<md-button ng-show='localStorage.holdings != undefined' class='md-icon-button' ng-click='goToHoldings()'>
                     <i class="material-icons">account_balance</i>
                     <md-tooltip>Holdings</md-tooltip>
-                </md-button>
+                </md-button>-->
             </div>
         </md-toolbar>
     </header>

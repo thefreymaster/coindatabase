@@ -27,7 +27,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             percent_change_7d: 0,
 
         },
-
+        updated_live_holdings_data: [],
         loading_holdings: true
     };
 
@@ -76,6 +76,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                         service.cryptoObject.top_cryptos[h].holdings = true;
                         service.cryptoObject.holdings_metrics.total_holdings_value = service.cryptoObject.holdings_metrics.total_holdings_value + (service.cryptoObject.top_cryptos[h].price_usd * service.$storage.holdings[w].amount);
                         service.cryptoObject.holdings_metrics.total_holdings_cost = service.cryptoObject.holdings_metrics.total_holdings_cost + service.$storage.holdings[w].cost;
+                        service.cryptoObject.updated_live_holdings_data.push(service.cryptoObject.top_cryptos[h]);
                         // service.calculateTotalHoldingsValue(service.cryptoObject.holdings_metrics.percent_change_1h, service.$storage.holdings[w].cost)
                         // service.cryptoObject.holdings_metrics.percent_change_1h = service.cryptoObject.holdings_metrics.percent_change_1h + service.cryptoObject.top_cryptos[h].percent_change_1h;
                         // service.cryptoObject.holdings_metrics.percent_change_24h = service.cryptoObject.holdings_metrics.percent_change_24h + service.cryptoObject.top_cryptos[h].percent_change_24h;
@@ -117,6 +118,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         console.log(service.tempPercents)
         console.log(service.cryptoObject);
         console.log(service.$storage.holdings);
+        console.log(service.cryptoObject.updated_live_holdings_data);
 
     })
 
