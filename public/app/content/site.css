@@ -189,6 +189,9 @@ md-list-item.md-3-line{
     font-weight: 900;
     font-size: 48px;
 }
+.metric-big{
+    font-size: 28px;
+}
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;

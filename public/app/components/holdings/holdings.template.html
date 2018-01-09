@@ -208,12 +208,25 @@
                 <div class='holding_name'>{{::holding.crypto.name}}</div>
                 <div class='holding_symbol'>{{::holding.crypto.symbol}}</div>
 
-                <div class='holding_change' ng-class='{"gain": holding.crypto.percent_change_1h > 0, "loss": holding.crypto.percent_change_1h < 0}'>
-                    1HR: {{::holding.crypto.percent_change_1h | number: 2}}% <i ng-class='{"loss-icon": holding.crypto.percent_change_1h < 0}' class="material-icons md-10">&#xE86B;</i>
+                <md-divider></md-divider>
+
+                <div class='holding_change' layout='column' layout-align='center center'>
+                    <div class='metric-big' ng-class='{"gain": holding.crypto.percent_change_1h > 0, "loss": holding.crypto.percent_change_1h < 0}' >
+                        {{::holding.crypto.percent_change_1h | number: 2}}% <i ng-class='{"loss-icon": holding.crypto.percent_change_1h < 0}' class="material-icons md-10">&#xE86B;</i>
+                    </div>
+                    <div class='holding_symbol'>
+                        1HR
+                    </div>
+                    
                 </div>
-                <div class='holding_change' ng-class='{"gain": holding.crypto.percent_change_24h > 0, "loss": holding.crypto.percent_change_24h < 0}'>
-                    24HR: {{::holding.crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": holding.crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i>
-                </div>
+                <!-- <div class='holding_change' layout='column' layout-align='center center'>
+                    <div class='metric-big' ng-class='{"gain": holding.crypto.percent_change_24h > 0, "loss": holding.crypto.percent_change_24h < 0}' >
+                        {{::holding.crypto.percent_change_24h | number: 2}}% <i ng-class='{"loss-icon": holding.crypto.percent_change_24h < 0}' class="material-icons md-10">&#xE86B;</i>
+                    </div>
+                    <div class='holding_symbol'>
+                            24HR
+                    </div>
+                </div> -->
                     
             </div>
             <md-grid-tile-footer>
