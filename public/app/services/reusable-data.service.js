@@ -190,19 +190,25 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         if (service.$storage.holdings == undefined) {
             service.$storage.holdings = [];
             service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
-            // console.log(service.$storage.holdings);
+            service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
         }
         else {
             service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
+            service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
+            
         }
-
+            console.log(service.$storage.holdings);
     }
 
     service.deleteHolding = function (index) {
-        service.$storage.holdings.splice(index, 1)
+        service.$storage.holdings.splice(index, 1);
+        service.cryptoObject.updated_live_holdings_data.splice(index, 1);
+        
         if(service.$storage.holdings.length == 0)
         {
             service.$storage.holdings = null;
+            service.cryptoObject.updated_live_holdings_data = null;
+            
         }
     }
 
