@@ -189,6 +189,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
         if (service.$storage.holdings == undefined) {
             service.$storage.holdings = [];
+            service.cryptoObject.updated_live_holdings_data = [];
             service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
             service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
         }
