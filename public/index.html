@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.min.css">
     <link rel="stylesheet" href="app/content/site.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,500,900" rel="stylesheet">
-    <link rel="icon" href="app/content/favicon.ico">
+    <link rel="icon" href="app/content/touch-icon-iphone-retina.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--<script src="app/scripts/dragscroll.js"></script>-->
 
@@ -94,7 +94,7 @@
     </div>
     <!--<status-bar></status-bar> -->
     <header>
-        <md-toolbar md-whiteframe="1">
+        <md-toolbar class='title-toolbar'>
             <div class="md-toolbar-tools">
                 <md-button hide-lg hide-xl ng-click='openLeftMenu()' class="md-icon-button"
                     aria-label="Settings">
@@ -103,24 +103,25 @@
                 <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/touch-icon-iphone-retina.png" class='logo' alt="logo">
                 <h2 flex class='title'>CoinDB</h2>
                 <md-button ng-disabled='$ctrl.reusableDataService.cryptoObject.loading_holdings' ng-show='localStorage.holdings != undefined' ng-click='goToHoldings()'
-                class='md-block'>Holdings</md-button>
+                class='md-block'>All Holdings</md-button>
                 <!--<md-button ng-show='localStorage.holdings != undefined' class='md-icon-button' ng-click='goToHoldings()'>
                     <i class="material-icons">account_balance</i>
                     <md-tooltip>Holdings</md-tooltip>
                 </md-button>-->
             </div>
         </md-toolbar>
+        <md-divider></md-divider>
     </header>
 
     <main layout="row">
-        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="2">
+        <md-sidenav class="md-sidenav-left scrollbar" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="1">
             <side-nav-items></side-nav-items>
         </md-sidenav>
         <md-content flex='100'>
             <div ui-view='main-area'></div>
         </md-content>
         <md-sidenav class="md-sidenav-right scrollbar" md-component-id="right" md-is-locked-open="$mdMedia('gt-lg') && state.current.name != 'holdings'"
-            md-whiteframe="2">
+            md-whiteframe="1">
             <right-side-nav></right-side-nav>
         </md-sidenav>
     </main>

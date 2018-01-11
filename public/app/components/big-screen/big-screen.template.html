@@ -25,7 +25,7 @@
         </div>
         <div flex></div>
         <md-button ng-if='!$ctrl.mediaService.xl' ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='db-button holdings-margin-correction'>
-            Holdings
+            {{$ctrl.bigScreenService.bigScreenItem.current.symbol}} Holdings
         </md-button>
         <md-divider></md-divider>
     </md-list-item>
