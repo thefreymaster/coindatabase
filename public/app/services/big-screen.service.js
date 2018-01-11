@@ -12,7 +12,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         historic_prices: {},
         chart_data: [],
         chart_labels: [],
-        chart_color: ['#ff7043'],
+        chart_color: ['#ababab'],
         loading_chart: true,
         chart_available: true,
         holdings: [],

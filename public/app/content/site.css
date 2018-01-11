@@ -219,7 +219,7 @@ md-list-item.md-3-line{
 }
 .coindb-card-holding:hover{
     cursor:pointer;
-    background-color:rgb(61, 61, 61);
+    background-color:rgb(216, 216, 216);
     transition: background-color 250ms ease-in-out;    
 }
 .img-correction{
