@@ -1,3 +1,1 @@
-# howmuchisbitcoinrightnow
-
-Ever wonder how much bitcoin is right now?  Well, now you know.
+CoinDB is a crypto currency tracking app, using the CoinMarketCap API.  It utilizes, NodeJS/ExpressJS backend, and an AngularJS/Material front end.
