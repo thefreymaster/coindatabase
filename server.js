@@ -7,20 +7,16 @@ var fs = require('fs');
 var cmd=require('node-cmd');
 
 var request = require("request");
-var bodyParser = require('body-parser');
 
-
-var bodyParser = require('body-parser');
+var index = require('./routes/index.route');
 
 
 var app = express();
-var port = 5500;
+var port = 5600;
 app.listen(process.env.PORT || port, function () { 
     console.log('Running REST HTTPS server on port: '+port);
 });
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(express.static(__dirname + '/public'));
 
