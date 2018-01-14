@@ -116,7 +116,9 @@ main{
     vertical-align: middle;
 }
 .canvas{
-    background-color: #3b3b3b !important;
+    background-color: #ffffff !important;
+    color: black !important;
+
 }
 .material-icons.md-18 { 
     font-size: 18px;
@@ -130,8 +132,7 @@ a{
     text-decoration:none !important;
 }
 .md-subheader.md-default-theme, .md-subheader {
-    color: rgba(255,255,255,0.7);
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(241, 241, 241);
 }
 .label{
     background-color: #202020 !important;
@@ -141,21 +142,66 @@ a{
     margin-right: 10px;
 }
 .active-side-nav{
-    border-left: 6px solid rgb(255,112,67);
-    background-color: rgba(152, 91, 67, .45);
+    border-left: 6px solid rgb(62, 62, 62);
+    background-color: rgba(220, 220, 220, 0.45);
     transition: border-left 400ms ease-in-out;
+}
+md-content.md-default-theme, md-content {
+    color: rgba(70, 70, 70, 0.87) !important;
+    /* background-color: rgb(250,250,250); */
 }
 
 .material-icons.md-10 { font-size: 10px; }
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
+.material-icons.md-30 { font-size: 30px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.md-scroll-list{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.bottom-padding-list-item{
+    padding-bottom:42px;
+}
+md-grid-tile-footer{
+    background: rgb(245, 245, 245) !important;
+    color: #bdbdbd !important;
+}
+md-list-item.md-3-line{
+    height: auto !important;
+    }
+
+.align-correction{
+    position: absolute;
+    left: 0px;
+    top: -2px;
+    min-width: 100%;
+}
+.list-item-padding div{
+    padding:10px;
+}
+.metric-lg{
+    font-size:24px;
+    font-weight: 900;
+}
+.holding_symbol{
+    font-weight: 900;
+        color: #c9c9c9;
+
+}
+.holding_name{
+    font-weight: 900;
+    font-size: 48px;
+}
+.metric-big{
+    font-size: 28px;
+}
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #565454;
+    background-color: #b5b5b5;
 }
 .scrollbar::-webkit-scrollbar {
     width: 10px;
@@ -171,13 +217,37 @@ a{
     font-style: italic;
     
 }
+.coindb-card-holding:hover{
+    cursor:pointer;
+    background-color:rgb(216, 216, 216);
+    transition: background-color 250ms ease-in-out;    
+}
+.img-correction{
+    width:50px;
+}
+.title-toolbar{
+    background-color: white !important;
+}
+
+
 .md-headline-xxl{
-    font-size: 100px;
-    font-weight: 100;
+    font-size: 120px;
+    font-weight: 900;
 }
 .md-content-height{
     min-height: 90vh;
-    background-color: rgba(48, 48, 48, .95) !important;
+}
+.hover-pointer{
+    cursor:pointer;
+    outline: 0px;
+}
+
+.rotate-chevron{
+    transform: rotate(90deg);
+    transition: transform 250ms ease-in-out;    
+}
+.unrotate-chevron{   
+    transition: transform 250ms ease-in-out;    
 }
 .loss-icon{
     transform: rotate(180deg);
@@ -210,7 +280,7 @@ a{
     margin: 10px;
 }
 .title{
-    color:white;
+    /* color:white; */
 }
 .button-correction{
     margin-top:20px !important;
@@ -224,14 +294,20 @@ md-list{
 footer{
     margin-top:40px;
 }
-md-bottom-sheet {
-    background-color: rgb(45, 45, 45) !important;
-    border-top-width: 0px !important;
-}
+
 .settings-button-padding{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+.db-button{
+    border: 3px solid #ababab  !important;
+    border-radius: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    background-color: transparent  !important;
+    color:#ababab   !important;
+}
+
 
 
 

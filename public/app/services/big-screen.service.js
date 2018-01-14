@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSidenav', '$filter', function (httpService, $mdSidenav, $filter) {
+angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSidenav', '$filter', '$state', function (httpService, $mdSidenav, $filter, $state) {
     var service = this;
     console.log('Big Screen Service');
     service.httpService = httpService;
@@ -12,7 +12,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
         historic_prices: {},
         chart_data: [],
         chart_labels: [],
-        chart_color: ['#ff7043'],
+        chart_color: ['#ababab'],
         loading_chart: true,
         chart_available: true,
         holdings: [],
@@ -27,6 +27,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
     }
 
     service.changeBigScreenItem = function (newItem, index) {
+        $state.go('quote');
         service.bigScreenItem.chart_data = [];
         service.bigScreenItem.chart_labels = [];
         service.bigScreenItem.holdings = [];
@@ -78,7 +79,7 @@ angular.module('coindbApp').service('bigScreenService', ['httpService', '$mdSide
 
         service.bigScreenItem.loading = false;
         service.bigScreenItem.loading_chart = false;
-        console.log(service.bigScreenItem);
+        // console.log(service.bigScreenItem);
     }
 
     
