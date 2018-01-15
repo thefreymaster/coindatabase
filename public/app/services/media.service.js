@@ -1,6 +1,6 @@
 angular.module('coindbApp').service('mediaService', ['$mdMedia', function ($mdMedia) {
     var service = this;
-    console.log('Media Service');
+    // console.log('Media Service');
 
     service.$mdMedia = $mdMedia;
 

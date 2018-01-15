@@ -13,8 +13,8 @@
 
         </div>
         <div flex></div>
-        <md-button ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='md-raised md-primary holdings-margin-correction'>
-            Holdings
+        <md-button ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='db-button holdings-margin-correction'>
+            {{$ctrl.bigScreenService.bigScreenItem.current.symbol}} Holdings
         </md-button>
         <md-divider></md-divider>
     </md-list-item>

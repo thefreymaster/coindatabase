@@ -2,7 +2,7 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
 
 
     var service = this;
-    console.log('HTTP Service')
+    // console.log('HTTP Service')
 
     service.screenIsExtraSmall = $mdMedia('xs');
     service.screenIsSmall = $mdMedia('sm');

@@ -14,7 +14,7 @@
 
 </div>
 <!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
-<md-list ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
+<md-list ng-cloak ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
     <md-list-item class="md-2-line">
         <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{$ctrl.bigScreenService.bigScreenItem.current.id}}.png"
             class="md-avatar" />
@@ -24,14 +24,19 @@
 
         </div>
         <div flex></div>
-        <md-button ng-if='!$ctrl.mediaService.xl' ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='md-raised md-primary holdings-margin-correction'>
-            Holdings
+        <md-button ng-if='!$ctrl.mediaService.xl' ng-click='$ctrl.bigScreenService.openHoldingsMenu()' class='db-button holdings-margin-correction'>
+            {{$ctrl.bigScreenService.bigScreenItem.current.symbol}} Holdings
         </md-button>
         <md-divider></md-divider>
     </md-list-item>
 
 </md-list>
-<div ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
+
+
+
+
+
+<div ng-cloak ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false' layout='row' layout-wrap>
     <md-grid-list flex='100' flex-lg='100' flex-md='100' flex-sm='100' flex-xs='100' md-cols="12" md-gutter="0px" md-row-height="4:3"
         class='report-gutter'>
         <!-- ==================================================NAME========================================================================-->
@@ -127,12 +132,6 @@
                 chart-series="$ctrl.series" chart-options="$ctrl.options" chart-dataset-override="$ctrl.datasetOverride" chart-click="onClick">
             </canvas>
 
-            <div ng-if='!$ctrl.bigScreenService.bigScreenItem.chart_available' layout='column' layout-align='center center' ng-if='dataTransferService.currentGainer == undefined'>
-                <md-icon>
-                    <i class="material-icons loss md-36">&#xE8C6;</i>
-                </md-icon>
-                <p class='loss'>Graphs Offline</p>
-            </div>
             <md-grid-tile-footer>
                 <div layout='row'>
 
