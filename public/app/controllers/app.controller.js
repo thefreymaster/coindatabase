@@ -5,6 +5,7 @@ angular.module('coindbApp').controller('AppController', ['$scope', '$mdMedia', '
         $scope.bigScreenService = bigScreenService;
         $scope.state = $state;
         $scope.localStorage = $localStorage;
+        
 
 
         $scope.screenIsExtraSmall = $mdMedia('xs');

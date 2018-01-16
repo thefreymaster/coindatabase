@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', '$firebaseObject', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, $firebaseObject) {
     var service = this;
     console.log('Reusable Data Service');
     service.httpService = httpService;
@@ -11,6 +11,23 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     if (service.cryptoObject != undefined) {
         service.cryptoObject = {};
     }
+
+
+    var config = {
+        apiKey: "AIzaSyBMCy7gYhKADw4tQNKsk_Wx7rnxgEMEQFU",
+        authDomain: "coindatabase-54d75.firebaseapp.com",
+        databaseURL: "https://coindatabase-54d75.firebaseio.com",
+        projectId: "coindatabase-54d75",
+        storageBucket: "coindatabase-54d75.appspot.com",
+        messagingSenderId: "357194858436"
+      };
+      firebase.initializeApp(config);
+
+      var ref = firebase.database().ref();
+      // download the data into a local object
+      service.data = $firebaseObject(ref);
+
+      console.log(service.data);
 
 
     service.cryptoObject = {

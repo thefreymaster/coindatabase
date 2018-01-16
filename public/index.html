@@ -33,6 +33,12 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script>-->
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
     <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
 
@@ -96,14 +102,13 @@
     <header>
         <md-toolbar class='title-toolbar'>
             <div class="md-toolbar-tools">
-                <md-button hide-lg hide-xl ng-click='openLeftMenu()' class="md-icon-button"
-                    aria-label="Settings">
+                <md-button hide-lg hide-xl ng-click='openLeftMenu()' class="md-icon-button" aria-label="Settings">
                     <i class="material-icons">menu</i>
                 </md-button>
                 <img ng-class="{'logo-md': screenIsMedium == true}" src="app/content/touch-icon-iphone-retina.png" class='logo' alt="logo">
                 <h2 flex class='title'>CoinDB</h2>
-                <md-button ng-disabled='$ctrl.reusableDataService.cryptoObject.loading_holdings' ng-show='localStorage.holdings != undefined' ng-click='goToHoldings()'
-                class='md-block'>All Holdings</md-button>
+                <md-button ng-disabled='$ctrl.reusableDataService.cryptoObject.loading_holdings' ng-show='localStorage.holdings != undefined'
+                    ng-click='goToHoldings()' class='md-block'>All Holdings</md-button>
                 <!--<md-button ng-show='localStorage.holdings != undefined' class='md-icon-button' ng-click='goToHoldings()'>
                     <i class="material-icons">account_balance</i>
                     <md-tooltip>Holdings</md-tooltip>
