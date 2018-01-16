@@ -68,22 +68,22 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
 
 
-            if (service.$storage.holdings != undefined) {
-                for (w = 0; w < service.$storage.holdings.length; w++) {
-                    if (service.cryptoObject.top_cryptos[h].id == service.$storage.holdings[w].crypto.id) {
-                        service.cryptoObject.top_cryptos[h].holdings = true;
-                        service.cryptoObject.holdings_metrics.total_holdings_value = service.cryptoObject.holdings_metrics.total_holdings_value + (service.cryptoObject.top_cryptos[h].price_usd * service.$storage.holdings[w].amount);
-                        service.cryptoObject.holdings_metrics.total_holdings_cost = service.cryptoObject.holdings_metrics.total_holdings_cost + service.$storage.holdings[w].cost;
-                        service.cryptoObject.updated_live_holdings_data.push({ crypto: service.cryptoObject.top_cryptos[h], amount: service.$storage.holdings[w].amount, cost: service.$storage.holdings[w].cost });
-                        // service.calculateTotalHoldingsValue(service.cryptoObject.holdings_metrics.percent_change_1h, service.$storage.holdings[w].cost)
-                        // service.cryptoObject.holdings_metrics.percent_change_1h = service.cryptoObject.holdings_metrics.percent_change_1h + service.cryptoObject.top_cryptos[h].percent_change_1h;
-                        // service.cryptoObject.holdings_metrics.percent_change_24h = service.cryptoObject.holdings_metrics.percent_change_24h + service.cryptoObject.top_cryptos[h].percent_change_24h;
-                        // service.cryptoObject.holdings_metrics.percent_change_7d = service.cryptoObject.holdings_metrics.percent_change_7d + service.cryptoObject.top_cryptos[h].percent_change_7d;
-                    }
-                }
+            // if (service.$storage.holdings != undefined) {
+            //     for (w = 0; w < service.$storage.holdings.length; w++) {
+            //         if (service.cryptoObject.top_cryptos[h].id == service.$storage.holdings[w].crypto.id) {
+            //             service.cryptoObject.top_cryptos[h].holdings = true;
+            //             service.cryptoObject.holdings_metrics.total_holdings_value = service.cryptoObject.holdings_metrics.total_holdings_value + (service.cryptoObject.top_cryptos[h].price_usd * service.$storage.holdings[w].amount);
+            //             service.cryptoObject.holdings_metrics.total_holdings_cost = service.cryptoObject.holdings_metrics.total_holdings_cost + service.$storage.holdings[w].cost;
+            //             service.cryptoObject.updated_live_holdings_data.push({ crypto: service.cryptoObject.top_cryptos[h], amount: service.$storage.holdings[w].amount, cost: service.$storage.holdings[w].cost });
+            //             // service.calculateTotalHoldingsValue(service.cryptoObject.holdings_metrics.percent_change_1h, service.$storage.holdings[w].cost)
+            //             // service.cryptoObject.holdings_metrics.percent_change_1h = service.cryptoObject.holdings_metrics.percent_change_1h + service.cryptoObject.top_cryptos[h].percent_change_1h;
+            //             // service.cryptoObject.holdings_metrics.percent_change_24h = service.cryptoObject.holdings_metrics.percent_change_24h + service.cryptoObject.top_cryptos[h].percent_change_24h;
+            //             // service.cryptoObject.holdings_metrics.percent_change_7d = service.cryptoObject.holdings_metrics.percent_change_7d + service.cryptoObject.top_cryptos[h].percent_change_7d;
+            //         }
+            //     }
 
 
-            }
+            // }
 
             if (service.cryptoObject.top_cryptos[h].percent_change_24h > 100) {
                 service.cryptoObject.top_cryptos[h].major_spike = true;
@@ -114,7 +114,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
         // service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
         // console.log(service.tempPercents)
-        // console.log(service.cryptoObject);
+        console.log(service.cryptoObject);
         // console.log(service.$storage.holdings);
         // console.log(service.cryptoObject.updated_live_holdings_data);
 
@@ -131,7 +131,21 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                 }
             }
         }
+        if (service.accountService.account_data.holdings != undefined) {
+            for (s = 0; s < service.cryptoObject.top_cryptos.length; s++) {
+                for (d = 0; d < service.accountService.account_data.holdings.length; d++) {
+                    if (service.cryptoObject.top_cryptos[s].id == service.accountService.account_data.holdings[d].crypto.id) 
+                    {
+                        service.cryptoObject.top_cryptos[s].holdings = true;
+                        service.cryptoObject.holdings_metrics.total_holdings_value = service.cryptoObject.holdings_metrics.total_holdings_value + (service.cryptoObject.top_cryptos[s].price_usd * service.accountService.account_data.holdings[d].amount);
+                        service.cryptoObject.holdings_metrics.total_holdings_cost = service.cryptoObject.holdings_metrics.total_holdings_cost + service.accountService.account_data.holdings[d].cost;
+                        service.cryptoObject.updated_live_holdings_data.push({ crypto: service.cryptoObject.top_cryptos[s], amount: service.accountService.account_data.holdings[d].amount, cost: service.accountService.account_data.holdings[d].cost });
+                    }
+                }
+            }
+        }
     })
+
 
     service.tempPercents = {
         oneHour: [],
@@ -198,14 +212,21 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
 
     service.saveHolding = function (coin, amount, cost) {
 
-        if (service.$storage.holdings == undefined) {
-            service.$storage.holdings = [];
+        if (service.accountService.account_data.holdings == undefined) {
+            service.accountService.account_data.holdings = [];
             service.cryptoObject.updated_live_holdings_data = [];
-            service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
+            service.accountService.account_data.holdings.push({ crypto: coin, amount: amount, cost: cost });
+            service.accountService.account_data.$save(0).then(function (ref) {
+                ref.key === service.accountService.account_data.$id; // true
+            });
+            
             service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
         }
         else {
-            service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
+            service.accountService.account_data.holdings.push({ crypto: coin, amount: amount, cost: cost });
+            service.accountService.account_data.$save(0).then(function (ref) {
+                ref.key === service.accountService.account_data.$id; // true
+            });
             service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
 
         }
@@ -213,19 +234,21 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     }
 
     service.deleteHolding = function (index) {
-        service.$storage.holdings.splice(index, 1);
         service.cryptoObject.updated_live_holdings_data.splice(index, 1);
 
-        if (service.$storage.holdings.length == 0) {
-            service.$storage.holdings = null;
+        service.accountService.account_data.holdings.splice(index, 1);
+        service.accountService.account_data.$save(0).then(function (ref) {
+            ref.key === service.accountService.account_data.$id; // true
+        });
+
+        if (service.accountService.account_data.holdings.holdings.length == 0) {
+            service.accountService.account_data.holdings = null;
             service.cryptoObject.updated_live_holdings_data = null;
 
         }
     }
 
     service.trackCoin = function (coin) {
-        // console.log(coin);
-        // console.log(service.cryptoObject);
         if (coin.tracked == true) {
             coin.tracked = false;
             for (v = 0; v < service.cryptoObject.tracked_cryptos.length; v++) {
