@@ -1,6 +1,6 @@
 angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', 'accountService', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, accountService) {
     var service = this;
-    console.log('Reusable Data Service');
+    // console.log('Reusable Data Service');
     service.httpService = httpService;
     service.bigScreenService = bigScreenService;
     service.accountService = accountService;
@@ -66,14 +66,8 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             service.cryptoObject.top_cryptos[h].minor_spikes = false;
             service.cryptoObject.top_cryptos[h].holding = false;
 
-            if (service.$storage.tracked_cryptos != undefined) {
-                for (d = 0; d < service.$storage.tracked_cryptos.length; d++) {
-                    if (service.cryptoObject.top_cryptos[h].id == service.$storage.tracked_cryptos[d].id) {
-                        service.cryptoObject.top_cryptos[h].tracked = true;
-                        service.cryptoObject.tracked_cryptos.push(service.cryptoObject.top_cryptos[h]);
-                    }
-                }
-            }
+
+
             if (service.$storage.holdings != undefined) {
                 for (w = 0; w < service.$storage.holdings.length; w++) {
                     if (service.cryptoObject.top_cryptos[h].id == service.$storage.holdings[w].crypto.id) {
@@ -119,11 +113,24 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         service.cryptoObject.loading_holdings = false
 
         // service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
-        console.log(service.tempPercents)
-        console.log(service.cryptoObject);
-        console.log(service.$storage.holdings);
-        console.log(service.cryptoObject.updated_live_holdings_data);
+        // console.log(service.tempPercents)
+        // console.log(service.cryptoObject);
+        // console.log(service.$storage.holdings);
+        // console.log(service.cryptoObject.updated_live_holdings_data);
 
+    })
+
+    service.accountService.account_data.$loaded(function () {
+        if (service.accountService.account_data.tracking != undefined) {
+            for (s = 0; s < service.cryptoObject.top_cryptos.length; s++) {
+                for (d = 0; d < service.accountService.account_data.tracking.length; d++) {
+                    if (service.cryptoObject.top_cryptos[s].id == service.accountService.account_data.tracking[d].id) {
+                        service.cryptoObject.top_cryptos[s].tracked = true;
+                        service.cryptoObject.tracked_cryptos.push(service.cryptoObject.top_cryptos[s]);
+                    }
+                }
+            }
+        }
     })
 
     service.tempPercents = {
@@ -226,6 +233,12 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
                     service.cryptoObject.tracked_cryptos.splice(v, 1);
                     // service.$storage.tracked_cryptos.splice(v, 1);
                     // console.log(service.$storage.tracked_cryptos);
+                    service.accountService.account_data.tracking.splice(v, 1);
+                    service.accountService.account_data.$save(0).then(function (ref) {
+                        ref.key === service.accountService.account_data.$id; // true
+                    });
+
+
                 }
             }
             // var item = service.accountService.account_data[service.$storage.account_index];
@@ -238,12 +251,16 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         else {
             coin.tracked = true;
             service.cryptoObject.tracked_cryptos.push(coin);
-            if (service.accountService.account_data[service.$storage.account_index].tracking == undefined) {
-                service.accountService.account_data[service.$storage.account_index].tracking = [];
+            if (service.accountService.account_data.tracking == undefined) {
+                service.accountService.account_data.tracking = [];
+                service.$storage.tracked_cryptos = [];
             }
-            service.accountService.account_data[service.$storage.account_index].tracking.push(coin.symbol);
-            service.accountService.account_data.$save(service.$storage.account_index).then(function (ref) {
-                ref.key === service.accountService.account_data[service.$storage.account_index].$id; // true
+            service.accountService.account_data.tracking.push({
+                symbol: coin.symbol,
+                id: coin.id
+            });
+            service.accountService.account_data.$save(0).then(function (ref) {
+                ref.key === service.accountService.account_data.$id; // true
             });
 
         }

@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('accountService', ['$firebaseArray', '$localStorage', 'httpService', function ($firebaseArray, $localStorage, httpService) {
+angular.module('coindbApp').service('accountService', ['$firebaseArray', '$localStorage', 'httpService', '$firebaseObject', function ($firebaseArray, $localStorage, httpService, $firebaseObject) {
     var service = this;
     service.httpService = httpService;
     service.$storage = $localStorage;
@@ -14,23 +14,54 @@ angular.module('coindbApp').service('accountService', ['$firebaseArray', '$local
         projectId: "coindatabase-54d75",
         storageBucket: "coindatabase-54d75.appspot.com",
         messagingSenderId: "357194858436"
-      };
+    };
     firebase.initializeApp(config);
 
-    var ref = firebase.database().ref();
-    // download the data into a local object
-    service.account_data = $firebaseArray(ref);
 
-    if(service.$storage.account_id == undefined)
-    {
-        service.account_data.$add({
-            account_active: true
-        }).then(function(ref){
-            service.$storage.account_id = ref.key;
-            service.$storage.account_index = service.account_data.$indexFor(ref.key);
+    if (service.$storage.account_id == undefined) {
+        var ref = firebase.database().ref();
+        // download the data into a local object
+        service.account_data = $firebaseArray(ref);
+        //wait for response from firebase
+        service.account_data.$loaded(function () {
+            service.account_data.$add({
+                account_active: true                
+            }).then(function (ref) {
+                service.$storage.account_id = ref.key;
+                service.$storage.account_index = service.account_data.$indexFor(ref.key);
+                var ref = firebase.database().ref(service.$storage.account_id);
+                service.account_data = $firebaseObject(ref);
+                console.log(service.account_data);
+            })
         })
-        // service.$storage.account_id = service.account_data[service.account_data.length].$id;
     }
+    else{
+        var ref = firebase.database().ref(service.$storage.account_id);
+        // download the data into a local object
+        service.account_data = $firebaseObject(ref);
+        service.account_data.$loaded(function () {
+            console.log(service.account_data);
+        })
+    }
+
+    // var ref = firebase.database().ref(service.$storage.account_id);
+    // // download the data into a local object
+    // service.account_data = $firebaseArray(ref);
+
+    // //wait for response from firebase
+    // service.account_data.$loaded(function () {
+    //     var user_account = service.account_data.$getRecord(service.$storage.account_id);
+    //     if (user_account == null) {
+    //         service.account_data.$add({
+    //             account_active: true
+    //         }).then(function (ref) {
+    //             service.$storage.account_id = ref.key;
+    //             service.$storage.account_index = service.account_data.$indexFor(ref.key);
+    //             user_account = service.account_data.$getRecord(service.$storage.account_id);
+    //             console.log(user_account);
+    //         })
+    //     }
+    // })
 
     console.log(service.$storage);
 }])
