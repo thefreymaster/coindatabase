@@ -1,41 +1,47 @@
-app.controller('BigScreenController', function (bigScreenService, mediaService) {
-     var controller = this;
-     controller.bigScreenService = bigScreenService;
-     controller.mediaService = mediaService;
-     controller.loadingPrice = false;
+app.controller('BigScreenController', function (bigScreenService, mediaService, $state, $localStorage, reusableDataService) {
+    var controller = this;
+    controller.bigScreenService = bigScreenService;
+    controller.reusableDataService = reusableDataService;
 
-     controller.data = [];
- 
+    controller.mediaService = mediaService;
+    controller.loadingPrice = false;
+    controller.state = $state;
+    controller.$storage = $localStorage;
 
-     controller.series = ['Bitcoin'];
-
-        controller.onClick = function (points, evt) {
-            console.log(points, evt);
-        };
+    controller.data = [];
 
 
-        controller.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-        controller.options = {
-            scales: {
+
+
+    controller.series = ['Bitcoin'];
+
+    controller.onClick = function (points, evt) {
+        console.log(points, evt);
+    };
+
+
+    controller.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+    controller.options = {
+        scales: {
             yAxes: [
                 {
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
+                    id: 'y-axis-1',
+                    type: 'linear',
+                    display: true,
+                    position: 'left'
                 },
                 {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: false,
-                position: 'right'
+                    id: 'y-axis-2',
+                    type: 'linear',
+                    display: false,
+                    position: 'right'
                 }
             ]
-            },
-            elements: {
-                    point: {
-                        radius: 5
-                    }
-                },
-        };
- });
+        },
+        elements: {
+            point: {
+                radius: 5
+            }
+        },
+    };
+});
