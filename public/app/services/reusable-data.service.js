@@ -1,8 +1,9 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', '$firebaseObject', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, $firebaseObject) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', 'accountService', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, accountService) {
     var service = this;
     console.log('Reusable Data Service');
     service.httpService = httpService;
     service.bigScreenService = bigScreenService;
+    service.accountService = accountService;
     service.$storage = $localStorage;
     service.state = $state;
 
@@ -13,21 +14,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     }
 
 
-    var config = {
-        apiKey: "AIzaSyBMCy7gYhKADw4tQNKsk_Wx7rnxgEMEQFU",
-        authDomain: "coindatabase-54d75.firebaseapp.com",
-        databaseURL: "https://coindatabase-54d75.firebaseio.com",
-        projectId: "coindatabase-54d75",
-        storageBucket: "coindatabase-54d75.appspot.com",
-        messagingSenderId: "357194858436"
-      };
-      firebase.initializeApp(config);
 
-      var ref = firebase.database().ref();
-      // download the data into a local object
-      service.data = $firebaseObject(ref);
-
-      console.log(service.data);
 
 
     service.cryptoObject = {
@@ -119,8 +106,8 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         service.calculateAllPercentsMaster();
         if (service.bigScreenService.bigScreenItem.current == "") {
             if (service.$storage.holdings == undefined) {
-                    service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
-                    service.state.go('quote');
+                service.bigScreenService.changeBigScreenItem(service.cryptoObject.top_cryptos[0], 0);
+                service.state.go('quote');
             }
             else {
                 service.state.go('holdings');
@@ -150,7 +137,7 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
     var temp24hr = 0;
     var temp1day = 0;
 
-    service.calculateAllPercentsMaster = function(){
+    service.calculateAllPercentsMaster = function () {
         for (r = 0; r < service.cryptoObject.top_cryptos.length; r++) {
             if (service.$storage.holdings != undefined) {
                 for (u = 0; u < service.$storage.holdings.length; u++) {
@@ -213,20 +200,19 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
         else {
             service.$storage.holdings.push({ crypto: coin, amount: amount, cost: cost });
             service.cryptoObject.updated_live_holdings_data.push({ crypto: coin, amount: amount, cost: cost });
-            
+
         }
-            console.log(service.$storage.holdings);
+        console.log(service.$storage.holdings);
     }
 
     service.deleteHolding = function (index) {
         service.$storage.holdings.splice(index, 1);
         service.cryptoObject.updated_live_holdings_data.splice(index, 1);
-        
-        if(service.$storage.holdings.length == 0)
-        {
+
+        if (service.$storage.holdings.length == 0) {
             service.$storage.holdings = null;
             service.cryptoObject.updated_live_holdings_data = null;
-            
+
         }
     }
 
@@ -238,26 +224,27 @@ angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigS
             for (v = 0; v < service.cryptoObject.tracked_cryptos.length; v++) {
                 if (service.cryptoObject.tracked_cryptos[v].id == coin.id) {
                     service.cryptoObject.tracked_cryptos.splice(v, 1);
-                    service.$storage.tracked_cryptos.splice(v, 1);
+                    // service.$storage.tracked_cryptos.splice(v, 1);
                     // console.log(service.$storage.tracked_cryptos);
                 }
             }
+            // var item = service.accountService.account_data[service.$storage.account_index];
+            // service.accountService.account_data.$remove(item).then(function (ref) {
+            //     ref.key === item.$id; // true
+            // });
 
 
         }
         else {
             coin.tracked = true;
             service.cryptoObject.tracked_cryptos.push(coin);
-            if (service.$storage.tracked_cryptos == undefined) {
-                service.$storage.tracked_cryptos = [];
-                service.$storage.tracked_cryptos.push(coin);
-                // console.log(service.$storage.tracked_cryptos);
+            if (service.accountService.account_data[service.$storage.account_index].tracking == undefined) {
+                service.accountService.account_data[service.$storage.account_index].tracking = [];
             }
-            else {
-                service.$storage.tracked_cryptos.push(coin);
-                // console.log(service.$storage.tracked_cryptos);
-
-            }
+            service.accountService.account_data[service.$storage.account_index].tracking.push(coin.symbol);
+            service.accountService.account_data.$save(service.$storage.account_index).then(function (ref) {
+                ref.key === service.accountService.account_data[service.$storage.account_index].$id; // true
+            });
 
         }
 

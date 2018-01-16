@@ -17,6 +17,12 @@ angular.module('coindbApp').service('httpService', ['$http', '$mdMedia', functio
         })
     }
     
+    service.getUniqueID = function(){
+        return $http.get('/api/getuniqueid/').then(function(response){
+            // console.log(response);
+            return response;
+        })
+    }
 
     service.getAllCryptos = function () {
         return $http.get('/api/all').then(function (response) {

@@ -1,17 +1,10 @@
-var http = require("http");
-var https = require("https");
 var express = require('express');
-
-var tls = require('tls');
-var fs = require('fs');
-var cmd=require('node-cmd');
-
 var request = require("request");
-
 var index = require('./routes/index.route');
-
+var shortid = require('shortid');
 
 var app = express();
+
 var port = 5600;
 app.listen(process.env.PORT || port, function () { 
     console.log('Running REST HTTPS server on port: '+port);
@@ -19,6 +12,11 @@ app.listen(process.env.PORT || port, function () {
 
 
 app.use(express.static(__dirname + '/public'));
+
+app.get('/api/getuniqueid', function(request, response){
+    var account_id = shortid.generate();
+    response.send(account_id);
+})
 
 app.get('/', function (request, response){
     response.sendFile(path.resolve(__dirname, '/public', 'index.html'));
