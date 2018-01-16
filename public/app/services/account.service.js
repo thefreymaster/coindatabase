@@ -1,7 +1,9 @@
-angular.module('coindbApp').service('accountService', ['$firebaseArray', '$localStorage', 'httpService', '$firebaseObject', function ($firebaseArray, $localStorage, httpService, $firebaseObject) {
+angular.module('coindbApp').service('accountService', ['$firebaseArray', '$localStorage', 'httpService', '$firebaseObject', '$window', 'bigScreenService', '$mdDialog', '$mdBottomSheet', function ($firebaseArray, $localStorage, httpService, $firebaseObject, $window, bigScreenService, $mdDialog, $mdBottomSheet) {
     var service = this;
     service.httpService = httpService;
     service.$storage = $localStorage;
+    service.submitting = false;
+    service.bigScreenService = bigScreenService;
 
     console.log('Account Data Service');
 
@@ -62,6 +64,18 @@ angular.module('coindbApp').service('accountService', ['$firebaseArray', '$local
     //         })
     //     }
     // })
+
+    service.changedAccountID = function(newID){
+        $mdBottomSheet.hide();
+        $mdDialog.hide();
+        service.submitting = true;
+        service.bigScreenService.bigScreenItem.loading = true;
+        service.$storage.account_id = newID;
+        console.log('Account_ID has been changed, refreshing page');
+        setTimeout(function(){
+            $window.location.reload();
+        }, 3000)
+    }
 
     console.log(service.$storage);
 }])

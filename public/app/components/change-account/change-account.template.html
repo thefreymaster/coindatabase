@@ -1,0 +1,45 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>Change Account</h2>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="cancel()">
+      <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-dialog-content flex='80'>
+  <md-list>
+    <md-subheader class="md-no-sticky">Current Account Code</md-subheader>
+    <md-list-item class="md-2-line">
+      <h3>{{::$ctrl.accountService.$storage.account_id}}</h3>
+    </md-list-item>
+  </md-list>
+  <md-subheader class="md-no-sticky">To recover a previous account, type your previous account ID below, and hit submit</md-subheader>
+  <md-input-container class="md-block" flex='100'>
+    <label>Account Code</label>
+    <input type="text" ng-model="$ctrl.new_account_ID">
+  </md-input-container>
+  <!-- <div class="md-dialog-content">
+    <md-list>
+        <md-subheader class="md-no-sticky">Current Account Code</md-subheader>
+      <md-list-item class="md-2-line">
+          <h3>{{::$ctrl.accountService.$storage.account_id}}</h3>      
+      </md-list-item>
+    </md-list>
+    <p>To Recover a previous account, type your previous account code below, and hit submit</p>
+    <md-input-container>
+      <label>Account Code</label>
+      <input  class='md-block' type="text" ng-model="user.name">
+    </md-input-container>
+  </div> -->
+</md-dialog-content>
+
+<md-dialog-actions layout="row">
+  <md-button  ng-disabled='$ctrl.accountService.submitting' target="_blank" class='db-button'>
+    Cancel
+  </md-button>
+  <md-button ng-disabled='$ctrl.accountService.submitting' class='db-button' ng-click='$ctrl.accountService.changedAccountID($ctrl.new_account_ID)' target="_blank" md-autofocus>
+    Submit
+  </md-button>
+</md-dialog-actions>

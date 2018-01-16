@@ -14,6 +14,13 @@ app.controller('SettingsDrawerController', function (httpService, bigScreenServi
             clickOutsideToClose:true
           })
     }
-
+    controller.showChangeAccountDialog = function(ev){
+        $mdDialog.show({
+            template: '<change-account></change-account>',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true
+          })
+    }
 
 });
