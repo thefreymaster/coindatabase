@@ -2,8 +2,10 @@
   <div class="md-toolbar-tools">
     <h2>Change Account</h2>
     <span flex></span>
-    <md-button class="md-icon-button" ng-click="cancel()">
-      <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+    <md-button class="md-icon-button"  ng-click='$ctrl.hide()'>
+      <md-icon aria-label="Close dialog">
+        <i class="material-icons">close</i>
+      </md-icon>
     </md-button>
   </div>
 </md-toolbar>
@@ -36,10 +38,10 @@
 </md-dialog-content>
 
 <md-dialog-actions layout="row">
-  <md-button  ng-disabled='$ctrl.accountService.submitting' target="_blank" class='db-button'>
+  <md-button  ng-disabled='$ctrl.accountService.submitting' ng-click='$ctrl.hide()' target="_blank" class='db-button'>
     Cancel
   </md-button>
-  <md-button ng-disabled='$ctrl.accountService.submitting' class='db-button' ng-click='$ctrl.accountService.changedAccountID($ctrl.new_account_ID)' target="_blank" md-autofocus>
+  <md-button ng-class='{"db-button-disabled": $ctrl.new_account_ID == null, "db-button": $ctrl.new_account_ID != null}' ng-disabled='$ctrl.accountService.submitting || $ctrl.new_account_ID == null'  ng-click='$ctrl.accountService.changedAccountID($ctrl.new_account_ID)' target="_blank" md-autofocus>
     Submit
   </md-button>
 </md-dialog-actions>

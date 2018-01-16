@@ -308,7 +308,14 @@ footer{
     color:#ababab   !important;
 }
 
-
+.db-button-disabled {
+    border: 3px solid #f7f7f7 !important;
+    border-radius: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    background-color: transparent !important;
+    color: #e0e0e0 !important;
+}
 
 
 
