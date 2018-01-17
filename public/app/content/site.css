@@ -316,6 +316,10 @@ footer{
     background-color: transparent !important;
     color: #e0e0e0 !important;
 }
+.current-price{
+    font-size:32px !important;
+    font-weight:900 !important;
+}
 
 
 

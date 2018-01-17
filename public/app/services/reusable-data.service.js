@@ -1,4 +1,4 @@
-angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', 'accountService', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, accountService) {
+angular.module('coindbApp').service('reusableDataService', ['httpService', 'bigScreenService', '$localStorage', '$mdBottomSheet', '$mdSidenav', '$state', 'accountService', 'analyticsService', function (httpService, bigScreenService, $localStorage, $mdBottomSheet, $mdSidenav, $state, accountService, analyticsService) {
     var service = this;
     // console.log('Reusable Data Service');
     service.httpService = httpService;

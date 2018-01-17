@@ -6,7 +6,8 @@
 <!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
 <md-list ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false'>
     <md-list-item class="md-2-line">
-        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{$ctrl.bigScreenService.bigScreenItem.current.id}}.png" class="md-avatar" />
+        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{$ctrl.bigScreenService.bigScreenItem.current.id}}.png"
+            class="md-avatar" />
         <div class="md-list-item-text" layout="column">
             <h3>{{$ctrl.bigScreenService.bigScreenItem.current.name}}</h3>
             <h4>{{$ctrl.bigScreenService.bigScreenItem.current.symbol}}</h4>
@@ -20,12 +21,14 @@
     </md-list-item>
     <md-list-item class="md-2-line">
         <div class="md-list-item-text" layout="row">
-            <h1 flex class='center' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}'>${{$ctrl.bigScreenService.bigScreenItem.current.price_usd | number:2}}
-                <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}' class="material-icons md-18">&#xE86B;</i>
-            </h1>
-
+            <div flex layout='column'>
+                <h3 flex class='center current-price' ng-class='{"gain": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h > 0, "loss": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}'>${{$ctrl.bigScreenService.bigScreenItem.current.price_usd | number:2}}
+                    <i ng-class='{"loss-icon": $ctrl.bigScreenService.bigScreenItem.current.percent_change_24h < 0}' class="material-icons md-18">&#xE86B;</i>
+                </h3>
+                <p class='center'>Current USD Price</p>
+            </div>
         </div>
-        
+
         <md-divider></md-divider>
     </md-list-item>
     <md-list-item class="md-2-line">
