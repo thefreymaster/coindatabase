@@ -1,4 +1,4 @@
-<div>
+<div ng-if='$ctrl.bigScreenService.bigScreenItem.loading == false'>
 
     <md-list>
         <!--<md-subheader ng-show='$ctrl.localStorage.holdings != undefined' md-ink-ripple='true' class="md-no-sticky hover-pointer"
@@ -118,7 +118,7 @@
 
 
         <md-divider></md-divider>
-        <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracked Coins</md-subheader>
+        <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracking Coins</md-subheader>
         <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == crypto.id}'
             class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos track by crypto.id'
             ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
