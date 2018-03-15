@@ -6,7 +6,7 @@
 <!--<md-progress-circular ng-if='$ctrl.bigScreenService.bigScreenItem.loading == true' md-diameter="96"></md-progress-circular>-->
 <md-list ng-show='$ctrl.bigScreenService.bigScreenItem.loading == false'>
     <md-list-item class="md-2-line">
-        <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{$ctrl.bigScreenService.bigScreenItem.current.id}}.png"
+        <img ng-src="https://www.livecoinwatch.com/images/icons32/{{$ctrl.bigScreenService.bigScreenItem.current.symbol | lowercase}}.png"
             class="md-avatar" />
         <div class="md-list-item-text" layout="column">
             <h3>{{$ctrl.bigScreenService.bigScreenItem.current.name}}</h3>

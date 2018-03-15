@@ -45,7 +45,7 @@
 
         </div>
 
-        <md-divider></md-divider>
+        <md-divider ng-if="$ctrl.reusableDataService.cryptoObject.major_spikes.length != 0"></md-divider>
         <md-subheader md-ink-ripple='true' ng-if="$ctrl.reusableDataService.cryptoObject.major_spikes.length != 0" class="md-no-sticky hover-pointer"
             ng-click='$ctrl.toggleMajor()'>
             <div layout='row' layout-align='start center'>
@@ -78,7 +78,7 @@
             <md-divider></md-divider>
         </md-list-item>
         <md-divider layout-padding ng-if='$ctrl.showMajor == true'></md-divider>
-        <md-divider></md-divider>
+        <md-divider ng-if="$ctrl.reusableDataService.cryptoObject.minor_spikes.length != 0"></md-divider>
 
         <md-subheader md-ink-ripple='true' ng-if="$ctrl.reusableDataService.cryptoObject.minor_spikes.length != 0" class="md-no-sticky hover-pointer"
             ng-click='$ctrl.toggleMinor()'>
@@ -112,17 +112,13 @@
             <md-divider></md-divider>
         </md-list-item>
         <md-divider layout-padding ng-if='$ctrl.showMinor == true'></md-divider>
-        <md-divider></md-divider>
+        <md-divider ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" ></md-divider>
 
-
-
-
-        <md-divider></md-divider>
         <md-subheader ng-if="$ctrl.reusableDataService.cryptoObject.tracked_cryptos.length != 0" class="md-no-sticky">Tracking Coins</md-subheader>
         <md-list-item ng-if="crypto.tracked == true" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == crypto.id}'
             class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.tracked_cryptos track by crypto.id'
             ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
-            <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}"
+            <img ng-src="https://www.livecoinwatch.com/images/icons32/{{crypto.symbol | lowercase}}.png" class="md-avatar" alt="{{item.who}}"
             />
             <div class="md-list-item-text" layout="column">
                 <h3>{{::crypto.name}}</h3>
@@ -143,7 +139,7 @@
         <md-list-item ng-if="crypto.tracked == false" ng-class='{"active-side-nav": $ctrl.bigScreenService.bigScreenItem.active_side_nav_index == crypto.id}'
             class="md-2-line" ng-repeat='crypto in $ctrl.reusableDataService.cryptoObject.top_cryptos | filter:search | orderBy: $ctrl.orderByTerm: $ctrl.reverseStatus'
             ng-click="$ctrl.bigScreenService.changeBigScreenItem(crypto, $index)">
-            <img ng-src="https://files.coinmarketcap.com/static/img/coins/32x32/{{crypto.id}}.png" class="md-avatar" alt="{{item.who}}"
+            <img ng-src="https://www.livecoinwatch.com/images/icons32/{{crypto.symbol | lowercase}}.png" class="md-avatar" alt="{{item.who}}"
             />
             <div class="md-list-item-text" layout="column">
                 <h3>{{::crypto.name}}</h3>
