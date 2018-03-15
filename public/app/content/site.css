@@ -67,6 +67,7 @@ md-toolbar {
 .metric{
     font-size: 32px;
     font-weight: 800;
+    margin-top: -36px;
 }
 .text-metric-percent{
     font-size: 100px;
@@ -212,6 +213,7 @@ md-list-item.md-3-line{
 .md-headline-xl{
     font-size:180px;
     font-weight: 900;
+        margin-top: -36px;
 }
 .md-italic{
     font-style: italic;
